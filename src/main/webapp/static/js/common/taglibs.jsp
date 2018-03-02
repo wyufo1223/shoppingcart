@@ -7,4 +7,3 @@
 <c:set var="cssPath" value="${ctx}/static/css" />
 <c:set var="jsPath" value="${ctx}/static/js" />
 <c:set var="imgPath" value="${ctx}/static/images" />
-

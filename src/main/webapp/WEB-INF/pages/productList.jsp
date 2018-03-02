@@ -5,52 +5,57 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script type="text/javascript" src="../../static/js/bootstrap_4.0.0/js/bootstrap.min.js"></script>
-	<!-- <script type="text/javascript" src="../../static/js/jquery-ui.js"></script> -->
 	<title>My shopping cart</title>
-</head>
-<body>
-	<h2>Product List</h2>
+	
+	<%@include file="../../static/js/common/common.jsp"%>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="${jsPath }/bootstrap-4.0.0/css/bootstrap.min.css">  
+	<script type="text/javascript" src="${jsPath }/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="${jsPath }/bootstrap-4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
 
+		function addThisProduct(id) {  
+			console.log(id);
+		}
+		
+	</script>
+</head>
+<body>		
 	<div class="container">
+		<div class="page-header">
+		    <h1>Product List</h1>
+		</div>
 		<div class="row clearfix">
 			<div class="col-md-12 column">
 				<table class="table">
 					<thead>
 						<tr>
 							<th>Product Name</th>
+							<th>Number</th>
 							<th>Price</th>
 							<th>Status</th>
+							<th>Operation</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Status</th>
-						</tr>
-						<tr class="success">
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Status</th>
-						</tr>
-						<tr class="error">
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Status</th>
-						</tr>
-						<tr class="warning">
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Status</th>
-						</tr>
-						<tr class="info">
-							<th>Product Name</th>
-							<th>Price</th>
-							<th>Status</th>
-						</tr>
+						<c:forEach items="${products}" var="product">
+							<tr>
+								<th>${product.name } </th>
+								<th>
+									<form role="form">
+										<div class="form-group">
+											<input type="text" value="1" class="form-control" placeholder="numbers">
+										</div>
+									 </form>
+								</th>
+								<th>${product.unitPrice }</th>
+								<th>${product.status }</th>
+								<th><button onclick="addThisProduct('${product.id }')">Add</button></th>
+							</tr>
+						</c:forEach>			
+						
 					</tbody>
 				</table>
 			</div>
