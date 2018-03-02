@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--   bean alias in mapping files -->
+       <typeAliases>
+       		  <package name="com.adaweng.shoppingcart.entity"/>   
+           	<!-- <typeAlias type="com.adaweng.shoppingcart.entity.Product" alias="Product" />  -->
+            <!-- <typeAlias type="com.adaweng.shoppingcart.entity.Discount" alias="Discount" /> -->
+       </typeAliases>
+
+<!--   entity mapping config files -->
+       <mappers>
+			<mapper resource="persistence.mapper/ProductMapper.xml" />
+			<mapper resource="persistence.mapper/DiscountMapper.xml" />
+       </mappers> 
+</configuration>

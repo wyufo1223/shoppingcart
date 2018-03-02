@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaweng.shoppingcart.persistence.mapper.DiscountMapper">
+
+       <cache />
+
+       <resultMap type="Discount" id="DiscountMap">
+              <result column="id" property="id" />
+              <result column="name" property="name" />
+              <result column="availableDate" property="availableDate" />
+              <result column="productType" property="productType" />
+              <result column="discountType" property="discountType" />
+              <result column="rate" property="rate" />
+              <result column="priceReduced" property="priceReduced" />
+       </resultMap>
+
+       <select id="getAllDiscounts" resultType="Discount" useCache="false">
+              select *
+              from discount
+       </select>
+
+       <select id="getDiscountById" resultType="Discount" useCache="false">
+              select *
+              from discount
+              where id = #{id}
+       </select>
+
+       <select id="getDiscountByName" resultType="Discount" useCache="false">
+              select *
+              from discount
+              where name like ''||#{name}||'%'
+       </select>
+
+       <insert id="save">
+              insert into discount
+              set name = #{name}
+       </insert>
+       
+       <update id="update">
+              update discount
+              set name = #{name}
+              where id = #{id}
+       </update>
+
+       <delete id="delete">
+              delete from discount
+              where id = #{id}
+       </delete>
+
+</mapper>

@@ -1,0 +1,55 @@
+#
+# Structure for table "user"
+#
+use sboot;
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL auto_increment COMMENT 'PRIMARY KEY',
+  `name` varchar(64) NOT NULL COMMENT 'name',
+  `birthday` date DEFAULT NULL COMMENT 'birthday',
+  `address` varchar(256) DEFAULT NULL COMMENT 'address',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "user"
+#
+
+INSERT INTO `user` VALUES (1,'Ada Weng','1990-01-01','Xi\'an');
+
+#
+# Structure for table "user"
+#
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `sboot`.`product` (
+  `id` INT(11) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
+  `type` VARCHAR(20) NOT NULL,
+  `unitPrice` DOUBLE NOT NULL,
+  `description` VARCHAR(1000) NULL,
+  `stockAmount` INT(100) NULL DEFAULT 100,
+  `status` VARCHAR(20) NULL DEFAULT 'normal',
+  PRIMARY KEY (`id`)
+  )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "product"
+#
+
+use sboot;
+
+INSERT INTO `product` VALUES (1,'ipad','electronic', 2399.00, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (2,'显⽰器','electronic', 1799.00, '1799.00 1799.00 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (3,'啤酒','electronic', 25.00, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (4,'⾯包','electronic', 9.00, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (5,'蔬菜','electronic', 5.98, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (6,'餐⼱纸','electronic', 3.20, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (7,'ipad2','electronic', 2399.00, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (8,'ipad3','electronic', 2399.00, 'ipad 2399 electronic', 200, 'normal');
+INSERT INTO `product` VALUES (9,'ipad4','electronic', 2399.00, 'ipad 2399 electronic', 200, 'normal');
+
+
+
+
