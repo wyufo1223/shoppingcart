@@ -1,4 +1,4 @@
-package com.adaweng.shoppingcart.entity;
+package com.adaweng.shoppingcart.service.common;
 
 import java.math.BigDecimal;
 

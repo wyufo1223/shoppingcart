@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaweng.shoppingcart.mapper.OrderItemMapper">
+
+       <!-- <cache /> -->
+
+       <resultMap type="OrderItem" id="OrderItemMap">
+              <id column="id" property="id" />
+              <result column="name" property="name" />
+              <result column="numbers" property="numbers" />
+              <result column="subTotalPrice" property="subTotalPrice" />
+              <result column="subTotalDiscount" property="subTotalDiscount" />
+              <!-- <result column="discountId" property="discount" /> -->
+              <!-- one to one	association -->
+              <!-- <result column="productId" property="product" /> -->
+		      <association column="productId" property="product"  javaType="Product">
+		          <id column="id" property="id" jdbcType="BIGINT"/>
+	              <result column="name" property="name" jdbcType="VARCHAR"/>
+	              <result column="availableDate" property="availableDate" />
+	              <result column="productType" property="productType" jdbcType="VARCHAR"/>
+	              <result column="discountType" property="discountType" jdbcType="VARCHAR"/>
+	              <result column="rate" property="rate" />
+	              <result column="priceReduced" property="priceReduced" />
+		      </association>
+              <association column="discountId" property="discount" javaType="Discount">
+		          <id column="id" property="id" />
+	              <result column="name" property="name" />
+	              <result column="availableDate" property="availableDate" />
+	              <result column="productType" property="productType" />
+	              <result column="discountType" property="discountType" />
+	              <result column="rate" property="rate" />
+	              <result column="priceReduced" property="priceReduced" />
+		      </association>
+       </resultMap>
+
+       <select id="getAllOrderItems" resultType="OrderItem" useCache="false">
+              select *
+              from orderItem
+       </select>
+
+       <select id="getOrderItemById" resultType="OrderItem" useCache="false">
+              select *
+              from orderItem
+              where id = #{id}
+       </select>
+
+       <select id="getOrderItemByName" resultType="OrderItem" useCache="false">
+              select *
+              from orderItem
+              where name like ''||#{name}||'%'
+       </select>
+
+       <insert id="save">
+              insert into orderItem
+              set name = #{name}
+       </insert>
+       
+       <update id="update">
+              update orderItem
+              set name = #{name}
+              where id = #{id}
+       </update>
+
+       <delete id="delete">
+              delete from orderItem
+              where id = #{id}
+       </delete>
+
+</mapper>

@@ -1,16 +1,16 @@
 package com.adaweng.shoppingcart;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-@EnableCaching
+@MapperScan("com.adaweng.shoppingcart.mapper")
 public class Application {
-	@RequestMapping("")
+	@RequestMapping("/shoppingcart")
 	public String index(){
 		return "Hello Ada, welcome to Spring boot world！！！";
 	}

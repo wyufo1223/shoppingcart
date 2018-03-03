@@ -2,14 +2,16 @@ package com.adaweng.shoppingcart.entity;
 
 import java.util.Date;
 
+
 public class Coupon {
 	private Long id;
-	private String name;
+	private String name;	
 	private String code;
 	private Date startDate;
 	private Date endDate;
 	private Double priceReached;
 	private Double priceReduced;	
+	
 	private User user;
 	
 	public Long getId() {

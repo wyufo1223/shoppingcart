@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Set;
 
 public class Order {
+	private Long id;
+	private String orderCode;
 	private Set<OrderItem> orderItems;	
 	private Coupon coupon;	
 	private Date paymentDate;	
@@ -48,6 +50,22 @@ public class Order {
 
 	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getOrderCode() {
+		return orderCode;
+	}
+
+	public void setOrderCode(String orderCode) {
+		this.orderCode = orderCode;
 	}
 	
 }

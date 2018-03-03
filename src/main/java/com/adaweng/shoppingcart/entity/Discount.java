@@ -10,6 +10,7 @@ public class Discount {
 	private String discountType;
 	private Double rate;
 	private Double priceReduced;
+	private String description;
 	
 	public Long getId() {
 		return id;
@@ -53,5 +54,12 @@ public class Discount {
 	public void setPriceReduced(Double priceReduced) {
 		this.priceReduced = priceReduced;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	
 }

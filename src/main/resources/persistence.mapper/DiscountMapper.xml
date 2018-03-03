@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.adaweng.shoppingcart.persistence.mapper.DiscountMapper">
+<mapper namespace="com.adaweng.shoppingcart.mapper.DiscountMapper">
 
        <cache />
 
        <resultMap type="Discount" id="DiscountMap">
-              <result column="id" property="id" />
+              <id column="id" property="id" />
               <result column="name" property="name" />
               <result column="availableDate" property="availableDate" />
               <result column="productType" property="productType" />

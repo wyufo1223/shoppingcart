@@ -1,8 +1,8 @@
-package com.adaweng.shoppingcart.dto;
+package com.adaweng.shoppingcart.domain;
 
 import java.util.Date;
 
-public class Coupon {
+public class CouponView {
 	private Long id;
 	private String name;
 	private String code;
@@ -10,7 +10,7 @@ public class Coupon {
 	private Date endDate;
 	private Double priceReached;
 	private Double priceReduced;	
-	private User user;
+	private UserView user;
 	
 	public Long getId() {
 		return id;
@@ -54,10 +54,10 @@ public class Coupon {
 	public void setPriceReduced(Double priceReduced) {
 		this.priceReduced = priceReduced;
 	}
-	public User getUser() {
+	public UserView getUser() {
 		return user;
 	}
-	public void setUser(User user) {
+	public void setUser(UserView user) {
 		this.user = user;
 	}	
 	

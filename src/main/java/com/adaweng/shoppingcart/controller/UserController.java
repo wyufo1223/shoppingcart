@@ -6,20 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.adaweng.shoppingcart.mapper.ProductMapper;
+import com.adaweng.shoppingcart.mapper.UserMapper;
 
 @RestController
-@RequestMapping("/shoppingcart")
-public class ProductController {
+@RequestMapping("")
+public class UserController {
 	@Autowired
-    private ProductMapper productMapper;
+    private UserMapper userMapper;
 	
 
 	
-    @RequestMapping("/products")
+    @RequestMapping("/users")
     public ModelAndView getAllProducts(ModelMap model){
-    	model.addAttribute("products", productMapper.getAllProducts());
+    	model.addAttribute("products", userMapper.getAllUsers());
 		return new ModelAndView("productList", model);
     }
-    
 }

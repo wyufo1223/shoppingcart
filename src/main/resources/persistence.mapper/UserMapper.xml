@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaweng.shoppingcart.mapper.UserMapper">
+
+       <!-- <cache /> -->
+
+       <resultMap type="User" id="UserMap">
+              <id column="id" property="id" />
+              <result column="name" property="name" />
+              <result column="birthday" property="birthday" />
+              <result column="address" property="address" />
+       </resultMap>
+
+       <select id="getAllUsers" resultType="User" useCache="false">
+              select *
+              from user
+       </select>
+
+       <select id="getUserById" resultType="User" useCache="false">
+              select *
+              from user
+              where id = #{id}
+       </select>
+
+       <select id="getUserByName" resultType="User" useCache="false">
+              select *
+              from user
+              where name like ''||#{name}||'%'
+       </select>
+
+       <insert id="save">
+              insert into user
+              set name = #{name}
+       </insert>
+
+       <delete id="delete">
+              delete from user
+              where id = #{id}
+       </delete>
+
+</mapper>

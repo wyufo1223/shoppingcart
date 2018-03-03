@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.adaweng.shoppingcart.persistence.mapper.ProductMapper">
+<mapper namespace="com.adaweng.shoppingcart.mapper.ProductMapper">
 
-       <cache />
+      <!--  <cache /> -->
 
        <resultMap type="Product" id="ProductMap">
-              <result column="id" property="id" />
-              <result column="name" property="name" />
+              <id column="id" property="id" jdbcType="BIGINT"/>
+              <result column="name" property="name" jdbcType="VARCHAR"/>
               <result column="availableDate" property="availableDate" />
-              <result column="productType" property="productType" />
-              <result column="discountType" property="discountType" />
+              <result column="productType" property="productType" jdbcType="VARCHAR"/>
+              <result column="discountType" property="discountType" jdbcType="VARCHAR"/>
               <result column="rate" property="rate" />
               <result column="priceReduced" property="priceReduced" />
        </resultMap>

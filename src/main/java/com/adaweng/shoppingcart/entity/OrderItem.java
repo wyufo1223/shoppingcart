@@ -2,18 +2,22 @@ package com.adaweng.shoppingcart.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Transient;
+
 import com.adaweng.shoppingcart.discountstrategy.DiscountStrategy;
 import com.adaweng.shoppingcart.discountstrategy.PercentageDiscountStrategy;
-
 
 public class OrderItem {
 	private Long id;
 	private String name;
-	private Product product;
-	private Long numbers;	
+	private Long numbers;
+	private String description;
 	private BigDecimal subTotalPrice;
 	private BigDecimal subTotalDiscount;
+	private Product product;
 	private Discount discount;
+	
+	@Transient
 	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy();
 	
 	public BigDecimal calculateSubtotalPrice() {
@@ -98,6 +102,14 @@ public class OrderItem {
 
 	public void setDiscountStrategy(DiscountStrategy discountStrategy) {
 		this.discountStrategy = discountStrategy;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 }

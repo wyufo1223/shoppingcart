@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>My shopping cart</title>
+	<title>Product List</title>
 	
 	<%@include file="../../static/js/common/common.jsp"%>
 	
@@ -16,8 +16,20 @@
 	<script type="text/javascript" src="${jsPath }/bootstrap-4.0.0/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 
-		function addThisProduct(id) {  
-			console.log(id);
+		function addProductToCart(id) {
+			var data = {"id": id};
+            $.ajax({
+                url : "addProductToCart",
+                data: id,
+                type: "post",
+                dataType: "json",
+                contentType: "application/json",
+				success : function(result){
+					var result = eval(result);
+				},
+				complete : function(XMLHttpRequest, textStatus, errorThrown){
+				}
+			});	
 		}
 		
 	</script>
@@ -46,13 +58,13 @@
 								<th>
 									<form role="form">
 										<div class="form-group">
-											<input type="text" value="1" class="form-control" placeholder="numbers">
+											<input type="text" value="1" readonly class="form-control" placeholder="edit numbers">
 										</div>
 									 </form>
 								</th>
 								<th>${product.unitPrice }</th>
 								<th>${product.status }</th>
-								<th><button onclick="addThisProduct('${product.id }')">Add</button></th>
+								<th><button onclick="addProductToCart('${product.id }')">Add</button></th>
 							</tr>
 						</c:forEach>			
 						

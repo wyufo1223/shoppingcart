@@ -1,4 +1,7 @@
-package com.adaweng.shoppingcart.entity;
+package com.adaweng.shoppingcart.service.common;
+
+import com.adaweng.shoppingcart.entity.Coupon;
+import com.adaweng.shoppingcart.entity.Order;
 
 public class OrderRequest {
 	Order order;

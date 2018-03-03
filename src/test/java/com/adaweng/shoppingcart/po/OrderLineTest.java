@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.adaweng.shoppingcart.dto.OrderItem;
+import com.adaweng.shoppingcart.domain.OrderItemView;
 
-public class OrderLineTest extends OrderItem {
+public class OrderLineTest extends OrderItemView {
 
 	@Before
 	public void setUp() throws Exception {

@@ -5,14 +5,17 @@
 <configuration>
 <!--   bean alias in mapping files -->
        <typeAliases>
-       		  <package name="com.adaweng.shoppingcart.entity"/>   
-           	<!-- <typeAlias type="com.adaweng.shoppingcart.entity.Product" alias="Product" />  -->
-            <!-- <typeAlias type="com.adaweng.shoppingcart.entity.Discount" alias="Discount" /> -->
+             <typeAlias type="com.adaweng.shoppingcart.entity.Discount" alias="Discount" /> 
+              <typeAlias type="com.adaweng.shoppingcart.entity.Product" alias="Product" /> 
+             <typeAlias type="com.adaweng.shoppingcart.entity.OrderItem" alias="OrderItem" />              
+             <typeAlias type="com.adaweng.shoppingcart.entity.User" alias="User" /> 
        </typeAliases>
 
 <!--   entity mapping config files -->
-       <mappers>
+<!--         <mappers>			
+        	<mapper resource="persistence.mapper/DiscountMapper.xml" />
 			<mapper resource="persistence.mapper/ProductMapper.xml" />
-			<mapper resource="persistence.mapper/DiscountMapper.xml" />
-       </mappers> 
+			<mapper resource="persistence.mapper/OrderItemMapper.xml" />
+			<mapper resource="persistence.mapper/UserMapper.xml" />			
+       </mappers> -->
 </configuration>

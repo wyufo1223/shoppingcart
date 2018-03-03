@@ -1,37 +1,37 @@
-package com.adaweng.shoppingcart.dto;
+package com.adaweng.shoppingcart.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
-public class Order {
-	private Set<OrderItem> orderItems;	
-	private Coupon coupon;	
+public class OrderView {
+	private Set<OrderItemView> orderItems;	
+	private CouponView couponView;	
 	private Date paymentDate;	
 	private BigDecimal totalPrice;
 	
-	public void addOrderItem(OrderItem orderItem){
+	public void addOrderItem(OrderItemView orderItem){
 		orderItems.add(orderItem);
 	}
 	
-	public void deleteOrderItem(OrderItem orderItem){
+	public void deleteOrderItem(OrderItemView orderItem){
 		orderItems.remove(orderItem);
 	}
 
-	public Set<OrderItem> getOrderItems() {
+	public Set<OrderItemView> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(Set<OrderItem> orderItems) {
+	public void setOrderItems(Set<OrderItemView> orderItems) {
 		this.orderItems = orderItems;
 	}
 
-	public Coupon getCoupon() {
-		return coupon;
+	public CouponView getCoupon() {
+		return couponView;
 	}
 
-	public void setCoupon(Coupon coupon) {
-		this.coupon = coupon;
+	public void setCoupon(CouponView coupon) {
+		this.couponView = coupon;
 	}
 
 	public Date getPaymentDate() {

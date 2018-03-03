@@ -18,10 +18,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.adaweng.shoppingcart.dto.Coupon;
-import com.adaweng.shoppingcart.dto.Discount;
-import com.adaweng.shoppingcart.dto.OrderItem;
-import com.adaweng.shoppingcart.dto.ProductType;
+import com.adaweng.shoppingcart.domain.CouponView;
+import com.adaweng.shoppingcart.domain.DiscountView;
+import com.adaweng.shoppingcart.domain.OrderItemView;
+import com.adaweng.shoppingcart.domain.ProductType;
 
 
 @RunWith(SpringRunner.class)

@@ -1,6 +1,8 @@
-package com.adaweng.shoppingcart.dto;
+package com.adaweng.shoppingcart.domain;
 
-public class Product {
+import com.adaweng.shoppingcart.entity.Product;
+
+public class ProductView {
 	private Long id;
 	private String name;
 	private String type;
@@ -8,6 +10,19 @@ public class Product {
 	private String description;
 	private Long stockAmount;
 	private String status;
+	
+	public static ProductView convertProductToProductView(Product p){
+		ProductView pv = new ProductView();
+		
+		pv.setName(p.getName());
+		pv.setType(p.getType());
+		pv.setUnitPrice(p.getUnitPrice());		
+		pv.setDescription(p.getDescription());
+		pv.setStockAmount(p.getStockAmount());
+		pv.setStatus(p.getStatus());
+		
+		return pv;
+	}
 	
 	public Long getId() {
 		return id;

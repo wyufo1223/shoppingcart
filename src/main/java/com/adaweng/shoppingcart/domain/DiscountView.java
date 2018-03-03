@@ -1,11 +1,20 @@
-package com.adaweng.shoppingcart.dto;
+package com.adaweng.shoppingcart.domain;
 
 import java.util.Date;
 
-public class Discount {	
+import com.adaweng.shoppingcart.entity.Discount;
+
+public class DiscountView {	
 	private Long id;
 	private Date availableDate;	
 	private String productType;
+	
+	public static DiscountView convertDiscountToDiscountView(Discount discount) {
+		DiscountView dv = new DiscountView();
+		dv.setAvailableDate(discount.getAvailableDate());
+		dv.setProductType(discount.getProductType());
+		return null;
+	}
 	
 	public Long getId() {
 		return id;
@@ -25,5 +34,6 @@ public class Discount {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+	
 	
 }

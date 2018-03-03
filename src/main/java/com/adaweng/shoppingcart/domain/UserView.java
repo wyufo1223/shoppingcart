@@ -1,6 +1,6 @@
-package com.adaweng.shoppingcart.dto;
+package com.adaweng.shoppingcart.domain;
 
-public class User {
+public class UserView {
 	private Long id;
 	private String userName;
 	private String nickName;
