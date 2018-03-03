@@ -2,10 +2,10 @@ package com.adaweng.shoppingcart.domain;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 public class OrderView {
-	private Set<OrderItemView> orderItems;	
+	private List<OrderItemView> orderItems;	
 	private CouponView couponView;	
 	private Date paymentDate;	
 	private BigDecimal totalPrice;
@@ -19,11 +19,11 @@ public class OrderView {
 		orderItems.remove(orderItem);
 	}
 
-	public Set<OrderItemView> getOrderItems() {
+	public List<OrderItemView> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(Set<OrderItemView> orderItems) {
+	public void setOrderItems(List<OrderItemView> orderItems) {
 		this.orderItems = orderItems;
 	}
 

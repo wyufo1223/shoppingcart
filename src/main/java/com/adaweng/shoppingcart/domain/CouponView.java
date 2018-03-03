@@ -2,6 +2,8 @@ package com.adaweng.shoppingcart.domain;
 
 import java.util.Date;
 
+import com.adaweng.shoppingcart.entity.Coupon;
+
 public class CouponView {
 	private Long id;
 	private String name;
@@ -11,6 +13,21 @@ public class CouponView {
 	private Double priceReached;
 	private Double priceReduced;	
 	private UserView user;
+	private String userId;
+	
+	public static CouponView convertCouponToCouponView(Coupon coupon){
+		CouponView couponView = new CouponView();
+		
+		couponView.setId(coupon.getId());	
+		couponView.setName(coupon.getName());		
+		couponView.setUserId(coupon.getUserId());
+		couponView.setEndDate(coupon.getEndDate());
+		couponView.setPriceReached(coupon.getPriceReached());
+		couponView.setPriceReduced(coupon.getPriceReduced());
+		
+		return couponView;
+	}
+
 	
 	public Long getId() {
 		return id;
@@ -59,6 +76,14 @@ public class CouponView {
 	}
 	public void setUser(UserView user) {
 		this.user = user;
+	}
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}	
+	
 	
 }

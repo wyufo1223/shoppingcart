@@ -10,9 +10,10 @@
 <!--   bean alias in mapping files -->
        <typeAliases>
              <typeAlias type="com.adaweng.shoppingcart.entity.Discount" alias="Discount" /> 
-              <typeAlias type="com.adaweng.shoppingcart.entity.Product" alias="Product" /> 
+             <typeAlias type="com.adaweng.shoppingcart.entity.Product" alias="Product" /> 
              <typeAlias type="com.adaweng.shoppingcart.entity.OrderItem" alias="OrderItem" />              
              <typeAlias type="com.adaweng.shoppingcart.entity.User" alias="User" /> 
+             <typeAlias type="com.adaweng.shoppingcart.entity.Coupon" alias="Coupon" /> 
        </typeAliases>
 
 <!--   entity mapping config files -->

@@ -37,7 +37,7 @@
        
        <select id="getAllOrderItems" resultType="OrderItem" useCache="false">
             select oi.*, 
-            prod.id prodId, prod.name prodName, prod.type prodType, prod.unitPrice prodUnitPrice,
+            prod.id prodId, prod.name prodName, prod.type prodType, prod.unitPrice prodUnitPrice, prod.status prodStatus, prod.stockAmount prodStockAmount,
             disc.id discId, disc.name discName, disc.availableDate discAvailableDate, disc.rate discRate
 			from orderItem oi left join product prod on oi.productId = prod.id
 			left join discount disc on oi.discountId = disc.id

@@ -1,5 +1,8 @@
 package com.adaweng.shoppingcart.domain;
 
+import com.adaweng.shoppingcart.domain.CouponView;
+import com.adaweng.shoppingcart.domain.OrderView;
+
 public class OrderRequest {
 	OrderView orderView;
 	CouponView couponView;

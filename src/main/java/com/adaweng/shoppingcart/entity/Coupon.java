@@ -2,6 +2,8 @@ package com.adaweng.shoppingcart.entity;
 
 import java.util.Date;
 
+import javax.persistence.Transient;
+
 
 public class Coupon {
 	private Long id;
@@ -12,6 +14,8 @@ public class Coupon {
 	private Double priceReached;
 	private Double priceReduced;	
 	private User user;
+	@Transient
+	private String userId;
 	
 	public Long getId() {
 		return id;
@@ -60,6 +64,12 @@ public class Coupon {
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}	
-	
+		
 }

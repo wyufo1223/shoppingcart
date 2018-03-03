@@ -28,6 +28,10 @@ public class OrderItem {
 	private String prodType;
 	@Transient
 	private Double prodUnitPrice;
+	@Transient
+	private Double prodStockAmount;
+	@Transient
+	private String prodStatus;
 	
 	@Transient
 	private Long discId;
@@ -217,5 +221,21 @@ public class OrderItem {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
+	public Double getProdStockAmount() {
+		return prodStockAmount;
+	}
+
+	public void setProdStockAmount(Double prodStockAmount) {
+		this.prodStockAmount = prodStockAmount;
+	}
+
+	public String getProdStatus() {
+		return prodStatus;
+	}
+
+	public void setProdStatus(String prodStatus) {
+		this.prodStatus = prodStatus;
+	}
+		
 }

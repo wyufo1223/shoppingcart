@@ -3,8 +3,8 @@ package com.adaweng.shoppingcart.processor;
 import java.math.BigDecimal;
 
 import com.adaweng.shoppingcart.domain.OrderItemView;
-import com.adaweng.shoppingcart.domain.OrderRequest;
-import com.adaweng.shoppingcart.domain.OrderResponse;
+import com.adaweng.shoppingcart.service.common.OrderRequest;
+import com.adaweng.shoppingcart.service.common.OrderResponse;
 
 public class DiscountProcessor implements Processor {
 

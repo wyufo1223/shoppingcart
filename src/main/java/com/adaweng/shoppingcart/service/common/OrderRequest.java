@@ -1,26 +1,26 @@
 package com.adaweng.shoppingcart.service.common;
 
-import com.adaweng.shoppingcart.entity.Coupon;
-import com.adaweng.shoppingcart.entity.Order;
+import com.adaweng.shoppingcart.domain.CouponView;
+import com.adaweng.shoppingcart.domain.OrderView;
 
 public class OrderRequest {
-	Order order;
-	Coupon coupon;
+	OrderView orderView;
+	CouponView couponView;
 
-	public Order getOrder() {
-		return order;
+	public OrderView getOrder() {
+		return orderView;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrder(OrderView order) {
+		this.orderView = order;
 	}
 
-	public Coupon getCoupon() {
-		return coupon;
+	public CouponView getCoupon() {
+		return couponView;
 	}
 
-	public void setCoupon(Coupon coupon) {
-		this.coupon = coupon;
+	public void setCoupon(CouponView coupon) {
+		this.couponView = coupon;
 	}	
 	
 }

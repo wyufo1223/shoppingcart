@@ -29,31 +29,11 @@ public class OrderItemView {
 	private Double discRate;
 	private Double discPriceReduced;
 	
-	private UserView userView;	
+	private UserView userView;
+	
+	private Double prodStockAmount;
+	private String prodStatus;
 
-	
-/*	public BigDecimal calculateSubtotalPrice() {
-		BigDecimal totalPrice = BigDecimal.valueOf(0d);
-		if(null == this.getProduct()) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
-		
-		subTotalPrice = discountStrategy.calculateSubtotalPrice(numsBD.multiply(unitPriceBD));
-		this.setSubTotalPrice(subTotalPrice);
-		return subTotalPrice;
-	}*/
-	
-/*	public BigDecimal calculateSubtotalDiscount() {
-		BigDecimal totalPrice = BigDecimal.valueOf(0d);
-		if(null == this.getProduct()) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
-		
-		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(numsBD.multiply(unitPriceBD));
-		this.setSubTotalDiscount(subTotalDiscount);
-		return subTotalDiscount;
-	}*/
-	
 	public static OrderItemView convertOrderItemToOrderItemView(OrderItem oi){
 		OrderItemView oiv = new OrderItemView();
 		
@@ -66,7 +46,8 @@ public class OrderItemView {
 		//oiv.setDiscount(DiscountView.convertDiscountToDiscountView(oi.getDiscount()));
 		oiv.setProdId(oi.getProdId());
 		oiv.setDiscRate(oi.getDiscRate());
-		
+		oiv.setProdStatus(oi.getProdStatus());
+		oiv.setProdStockAmount(oi.getProdStockAmount());
 		return oiv;
 	}
 
@@ -206,6 +187,22 @@ public class OrderItemView {
 
 	public void setUserView(UserView userView) {
 		this.userView = userView;
+	}
+
+	public Double getProdStockAmount() {
+		return prodStockAmount;
+	}
+
+	public void setProdStockAmount(Double prodStockAmount) {
+		this.prodStockAmount = prodStockAmount;
+	}
+
+	public String getProdStatus() {
+		return prodStatus;
+	}
+
+	public void setProdStatus(String prodStatus) {
+		this.prodStatus = prodStatus;
 	}		
 	
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.adaweng.shoppingcart.mapper.CouponMapper">
+
+      <!--  <cache /> -->
+
+<!--        <resultMap type="Coupon" id="CouponMap">
+              <id column="id" property="id" />
+              <result column="name" property="name" />
+              <result column="code" property="code" />
+              <association column="userId" property="user"  javaType="User">
+		          <id column="id" property="id" jdbcType="BIGINT"/>
+	              <result column="name" property="name" jdbcType="VARCHAR"/>
+		      </association>
+              <result column="endDate" property="availableDate" />
+              <result column="priceReached" property="priceReached" />
+              <result column="priceReduced" property="priceReduced" />
+       </resultMap> -->
+
+       <select id="getAllCoupons" resultType="Coupon" useCache="false">
+             select c.*, u.id userId, u.name userName
+             from coupon c left join user u on c.userId = u.id
+       </select>
+
+       <select id="getCouponById" resultType="Coupon" useCache="false">
+			select c.*, u.id userId, u.name userName
+            from coupon c left join user u on c.userId = u.id
+            where c.id = #{id}
+       </select>
+
+</mapper>

@@ -2,14 +2,15 @@ package com.adaweng.shoppingcart.processor;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import com.adaweng.shoppingcart.domain.CouponView;
 import com.adaweng.shoppingcart.domain.OrderItemView;
-import com.adaweng.shoppingcart.domain.OrderRequest;
-import com.adaweng.shoppingcart.domain.OrderResponse;
 import com.adaweng.shoppingcart.domain.ProductStatus;
 import com.adaweng.shoppingcart.entity.OrderItem;
+import com.adaweng.shoppingcart.service.common.OrderRequest;
+import com.adaweng.shoppingcart.service.common.OrderResponse;
 import com.adaweng.shoppingcart.util.DateUtil;
 
 public class PriceProcessor implements Processor {
@@ -36,7 +37,7 @@ public class PriceProcessor implements Processor {
 	
 	public BigDecimal calculateTotalPriceWithDiscounts(OrderRequest request){
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
-		Set<OrderItemView> 	orderItems = request.getOrder().getOrderItems();
+		List<OrderItemView> orderItems = request.getOrder().getOrderItems();
 		
 		if(null == orderItems) {
 			System.out.println("There is no product in your order.");
@@ -45,19 +46,19 @@ public class PriceProcessor implements Processor {
 		
 		for(OrderItemView oi : orderItems){
 			BigDecimal numsBD = BigDecimal.valueOf(oi.getNumbers());
-			BigDecimal unitPriceBD = BigDecimal.valueOf(oi.getProduct().getUnitPrice());
+			BigDecimal unitPriceBD = BigDecimal.valueOf(oi.getProdUnitPrice());
 			
-			if(null != oi.getProduct().getStatus() && 
-					ProductStatus.REMOVED.name().equals(oi.getProduct().getStatus())) continue;
+			if(null != oi.getProdStatus() && 
+					ProductStatus.REMOVED.name().equals(oi.getProdStatus())) continue;
 			
-			if(null != oi.getProduct().getStockAmount() && 
-					oi.getNumbers() > oi.getProduct().getStockAmount()){
+			if(null != oi.getProdStockAmount() && 
+					oi.getNumbers() > oi.getProdStockAmount()){
 				System.out.println("The amount of stock is not enough.");
 				continue;
 			}
 			
 			totalPrice = totalPrice.add(calculateSubtotalPrice(oi));	
-			
+			request.getOrder().setTotalPrice(totalPrice);
 //			if(null == request.getOrder().getDateUtil){
 //				totalPrice = totalPrice.add(oi.calculateSubtotalPrice());				
 //			}else{
@@ -89,7 +90,7 @@ public class PriceProcessor implements Processor {
 				totalPrice = totalPrice.subtract(BigDecimal.valueOf(request.getCoupon().getPriceReduced()));
 			}
 		}
-		
+		request.getOrder().setTotalPrice(totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP));
 		return totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
