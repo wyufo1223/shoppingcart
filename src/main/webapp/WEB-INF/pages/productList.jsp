@@ -25,7 +25,7 @@
                 dataType: "json",
                 contentType: "application/json",
 				success : function(result){
-					var result = eval(result);
+					window.location.href = "${ctx }/shoppingcart/myShoppingCart";
 				},
 				complete : function(XMLHttpRequest, textStatus, errorThrown){
 				}
@@ -64,7 +64,7 @@
 								</th>
 								<th>${product.unitPrice }</th>
 								<th>${product.status }</th>
-								<th><button onclick="addProductToCart('${product.id }')">Add</button></th>
+								<th><button onclick="addProductToCart('${product.id }')">Add to Cart</button></th>
 							</tr>
 						</c:forEach>			
 						

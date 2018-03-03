@@ -12,9 +12,9 @@
               <result column="numbers" property="numbers" />
               <result column="subTotalPrice" property="subTotalPrice" />
               <result column="subTotalDiscount" property="subTotalDiscount" />
-              <!-- <result column="discountId" property="discount" /> -->
               <!-- one to one	association -->
               <!-- <result column="productId" property="product" /> -->
+              <!-- <result column="discountId" property="discount" /> -->
 		      <association column="productId" property="product"  javaType="Product">
 		          <id column="id" property="id" jdbcType="BIGINT"/>
 	              <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -22,10 +22,10 @@
 	              <result column="productType" property="productType" jdbcType="VARCHAR"/>
 	              <result column="discountType" property="discountType" jdbcType="VARCHAR"/>
 	              <result column="rate" property="rate" />
-	              <result column="priceReduced" property="priceReduced" />
+	              <result column="priceReduced" property="priceReduced" /> 
 		      </association>
               <association column="discountId" property="discount" javaType="Discount">
-		          <id column="id" property="id" />
+		          <id column="id" property="id" jdbcType="BIGINT"/>
 	              <result column="name" property="name" />
 	              <result column="availableDate" property="availableDate" />
 	              <result column="productType" property="productType" />
@@ -34,32 +34,51 @@
 	              <result column="priceReduced" property="priceReduced" />
 		      </association>
        </resultMap>
-
+       
        <select id="getAllOrderItems" resultType="OrderItem" useCache="false">
-              select *
-              from orderItem
+            select oi.*, 
+            prod.id prodId, prod.name prodName, prod.type prodType, prod.unitPrice prodUnitPrice,
+            disc.id discId, disc.name discName, disc.availableDate discAvailableDate, disc.rate discRate
+			from orderItem oi left join product prod on oi.productId = prod.id
+			left join discount disc on oi.discountId = disc.id
+			order by oi.id desc
        </select>
 
-       <select id="getOrderItemById" resultType="OrderItem" useCache="false">
-              select *
-              from orderItem
-              where id = #{id}
+       <select id="getOrderItemById" resultType="OrderItem" useCache="false"  parameterType="int">
+           	select oi.*, 
+            prod.id prodId, prod.name prodName, prod.type prodType, prod.unitPrice prodUnitPrice,
+            disc.id discId, disc.name discName, disc.availableDate discAvailableDate, disc.rate discRate
+			from orderItem oi left join product prod on oi.productId = prod.id
+			left join discount disc on oi.discountId = disc.id
+			where oi.id = #{id}
+			order by oi.id desc
        </select>
 
        <select id="getOrderItemByName" resultType="OrderItem" useCache="false">
-              select *
-              from orderItem
-              where name like ''||#{name}||'%'
+			select oi.*, 
+            prod.id prodId, prod.name prodName, prod.type prodType, prod.unitPrice prodUnitPrice,
+            disc.id discId, disc.name discName, disc.availableDate discAvailableDate, disc.rate discRate
+			from orderItem oi left join product prod on oi.productId = prod.id
+			left join discount disc on oi.discountId = disc.id
+            where name like ''||#{name}||'%'
+            order by oi.id desc
        </select>
 
-       <insert id="save">
+       <insert id="save" parameterType="OrderItem">
+            <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="id">
+	        SELECT LAST_INSERT_ID() AS id
+	        </selectKey>
               insert into orderItem
-              set name = #{name}
+              set name = #{name},
+              productId = #{product.id},
+              discountId = #{discount.id},
+              numbers = #{numbers}
        </insert>
        
        <update id="update">
               update orderItem
-              set name = #{name}
+              set name = #{name},
+              numbers = #{numbers}
               where id = #{id}
        </update>
 

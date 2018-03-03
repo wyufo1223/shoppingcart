@@ -1,6 +1,7 @@
 package com.adaweng.shoppingcart.entity;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Transient;
 
@@ -16,6 +17,25 @@ public class OrderItem {
 	private BigDecimal subTotalDiscount;
 	private Product product;
 	private Discount discount;
+	@Transient
+	private Long prodId;
+	@Transient
+	private String prodName;
+	@Transient
+	private String prodType;
+	@Transient
+	private Double prodUnitPrice;
+	
+	@Transient
+	private Long discId;
+	@Transient
+	private String discName;
+	@Transient
+	private Date discAvailableDate;
+	@Transient
+	private String discType;
+	@Transient
+	private Double discRate;
 	
 	@Transient
 	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy();
@@ -110,6 +130,78 @@ public class OrderItem {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Double getProdUnitPrice() {
+		return prodUnitPrice;
+	}
+
+	public void setProdUnitPrice(Double prodUnitPrice) {
+		this.prodUnitPrice = prodUnitPrice;
+	}
+
+	public Long getProdId() {
+		return prodId;
+	}
+
+	public void setProdId(Long prodId) {
+		this.prodId = prodId;
+	}
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public String getProdType() {
+		return prodType;
+	}
+
+	public void setProdType(String prodType) {
+		this.prodType = prodType;
+	}
+
+	public Long getDiscId() {
+		return discId;
+	}
+
+	public void setDiscId(Long discId) {
+		this.discId = discId;
+	}
+
+	public String getDiscName() {
+		return discName;
+	}
+
+	public void setDiscName(String discName) {
+		this.discName = discName;
+	}
+
+	public Date getDiscAvailableDate() {
+		return discAvailableDate;
+	}
+
+	public void setDiscAvailableDate(Date discAvailableDate) {
+		this.discAvailableDate = discAvailableDate;
+	}
+
+	public String getDiscType() {
+		return discType;
+	}
+
+	public void setDiscType(String discType) {
+		this.discType = discType;
+	}
+
+	public Double getDiscRate() {
+		return discRate;
+	}
+
+	public void setDiscRate(Double discRate) {
+		this.discRate = discRate;
 	}
 	
 }

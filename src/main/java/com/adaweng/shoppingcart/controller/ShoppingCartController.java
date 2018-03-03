@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.adaweng.shoppingcart.entity.Discount;
 import com.adaweng.shoppingcart.entity.OrderItem;
+import com.adaweng.shoppingcart.entity.Product;
 import com.adaweng.shoppingcart.mapper.DiscountMapper;
 import com.adaweng.shoppingcart.mapper.OrderItemMapper;
 import com.adaweng.shoppingcart.mapper.ProductMapper;
@@ -25,24 +27,19 @@ public class ShoppingCartController {
 	@Autowired
 	OrderItemMapper orderItemMapper;
 	
-	@Autowired
-	ProductMapper productMapper;
 	
-	@Autowired
-	DiscountMapper discountMapper;
 	
     @RequestMapping("addProductToCart")
     @ResponseBody
     public ModelAndView addProductToCart(ModelMap model, @RequestBody String id){
-		OrderItem orderItem = new OrderItem();
-		
-		orderItem.setProduct(productMapper.getProductById(Long.parseLong(id)));
-		orderItem.setDiscount(discountMapper.getDiscountByProductType(orderItem.getProduct().getType()));
-		orderItem.setId(orderItem.getProduct().getId());
-		orderItem.setNumbers(1l);
-		orderItemMapper.save(orderItem);
-		model.addAttribute("orderItems", shoppingCartService.getMyOrderItems());
-		return new ModelAndView("myShoppingCart", model);
+    	shoppingCartService.addProdToCart(id);
+		return new ModelAndView("myShoppingCart");
+    }
+    
+    @RequestMapping("delProdFromCart")
+    @ResponseBody
+    public void delProdFromCart(ModelMap model, @RequestBody String id){
+    	shoppingCartService.delProdFromCart(id);
     }
     
     @RequestMapping("myShoppingCart")

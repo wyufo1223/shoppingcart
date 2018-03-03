@@ -7,6 +7,8 @@ import com.adaweng.shoppingcart.entity.OrderItem;
 public interface OrderItemMapper {
 	  List<OrderItem> getAllOrderItems();
 	  
+	  List<OrderItem> getWithProductAndDiscount();	  
+	  
 	  OrderItem getOrderItemById(Long id);
 
 	  List<OrderItem> getOrderItemByName(String name);

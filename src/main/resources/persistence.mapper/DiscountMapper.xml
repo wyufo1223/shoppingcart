@@ -4,7 +4,7 @@
 
 <mapper namespace="com.adaweng.shoppingcart.mapper.DiscountMapper">
 
-       <cache />
+      <!--  <cache /> -->
 
        <resultMap type="Discount" id="DiscountMap">
               <id column="id" property="id" />
@@ -27,11 +27,17 @@
               where id = #{id}
        </select>
 
+       <select id="getDiscountByProductType" resultType="Discount" useCache="false">
+              select *
+              from discount
+              where productType like 'electronic%'
+       </select>
+       
        <select id="getDiscountByName" resultType="Discount" useCache="false">
               select *
               from discount
               where name like ''||#{name}||'%'
-       </select>
+       </select>       
 
        <insert id="save">
               insert into discount

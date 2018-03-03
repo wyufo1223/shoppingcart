@@ -3,6 +3,10 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+		<settings>
+	        <!-- print sql -->
+	        <setting name="logImpl" value="STDOUT_LOGGING" />
+	    </settings>
 <!--   bean alias in mapping files -->
        <typeAliases>
              <typeAlias type="com.adaweng.shoppingcart.entity.Discount" alias="Discount" /> 

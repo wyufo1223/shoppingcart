@@ -1,6 +1,7 @@
 package com.adaweng.shoppingcart.domain;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 import com.adaweng.shoppingcart.discountstrategy.DiscountStrategy;
 import com.adaweng.shoppingcart.discountstrategy.PercentageDiscountStrategy;
@@ -9,14 +10,25 @@ import com.adaweng.shoppingcart.entity.OrderItem;
 
 public class OrderItemView {
 	private Long id;
-	private String name;
-	private ProductView product;
-	private Double prodUnitPrice;
+	private String name;	
 	private Long numbers;	
 	private BigDecimal subTotalPrice;
 	private BigDecimal subTotalDiscount;
-	private DiscountView discount;
+	
 	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy();
+	
+	private ProductView product;
+	private Long prodId;
+	private String prodName;
+	private Double prodUnitPrice;
+	private String prodType;
+	
+	private DiscountView discount;
+	private Long discId;
+	private Date discAvailableDate;
+	private Double discRate;
+	private Double discPriceReduced;
+	
 	
 	public BigDecimal calculateSubtotalPrice() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
@@ -25,6 +37,7 @@ public class OrderItemView {
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
 		subTotalPrice = discountStrategy.calculateSubtotalPrice(numsBD.multiply(unitPriceBD));
+		this.setSubTotalPrice(subTotalPrice);
 		return subTotalPrice;
 	}
 	
@@ -35,6 +48,7 @@ public class OrderItemView {
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
 		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(numsBD.multiply(unitPriceBD));
+		this.setSubTotalDiscount(subTotalDiscount);
 		return subTotalDiscount;
 	}
 	
@@ -48,7 +62,9 @@ public class OrderItemView {
 		oiv.setSubTotalDiscount(oi.getSubTotalDiscount());
 		//oiv.setProduct(ProductView.convertProductToProductView(oi.getProduct()));
 		//oiv.setDiscount(DiscountView.convertDiscountToDiscountView(oi.getDiscount()));
-		
+		oiv.setProdId(oi.getProdId());
+		oiv.setDiscRate(oi.getDiscRate());
+		//oiv.setSubTotalDiscount(calculateSubtotalDiscount());
 		return oiv;
 	}
 
@@ -68,14 +84,6 @@ public class OrderItemView {
 		this.name = name;
 	}
 
-	public ProductView getProduct() {
-		return product;
-	}
-
-	public void setProduct(ProductView product) {
-		this.product = product;
-	}
-
 	public Long getNumbers() {
 		return numbers;
 	}
@@ -89,8 +97,8 @@ public class OrderItemView {
 	}
 
 	public void setSubTotalPrice(BigDecimal subTotalPrice) {
-//		this.subTotalPrice = subTotalPrice;
-		this.subTotalPrice = calculateSubtotalPrice();
+		this.subTotalPrice = subTotalPrice;
+//		this.subTotalPrice = calculateSubtotalPrice();
 	}
 
 	public BigDecimal getSubTotalDiscount() {
@@ -98,16 +106,8 @@ public class OrderItemView {
 	}
 
 	public void setSubTotalDiscount(BigDecimal subTotalDiscount) {
-//		this.subTotalDiscount = subTotalDiscount;
-		this.subTotalDiscount = calculateSubtotalDiscount();
-	}
-
-	public DiscountView getDiscount() {
-		return discount;
-	}
-
-	public void setDiscount(DiscountView discount) {
-		this.discount = discount;
+		this.subTotalDiscount = subTotalDiscount;
+//		this.subTotalDiscount = calculateSubtotalDiscount();
 	}
 
 	public DiscountStrategy getDiscountStrategy() {
@@ -125,5 +125,77 @@ public class OrderItemView {
 	public void setProdUnitPrice(Double prodUnitPrice) {
 		this.prodUnitPrice = prodUnitPrice;
 	}
-	
+
+	public Long getProdId() {
+		return prodId;
+	}
+
+	public void setProdId(Long prodId) {
+		this.prodId = prodId;
+	}
+
+	public String getProdName() {
+		return prodName;
+	}
+
+	public void setProdName(String prodName) {
+		this.prodName = prodName;
+	}
+
+	public String getProdType() {
+		return prodType;
+	}
+
+	public void setProdType(String prodType) {
+		this.prodType = prodType;
+	}
+
+	public Long getDiscId() {
+		return discId;
+	}
+
+	public void setDiscId(Long discId) {
+		this.discId = discId;
+	}
+
+	public Date getDiscAvailableDate() {
+		return discAvailableDate;
+	}
+
+	public void setDiscAvailableDate(Date discAvailableDate) {
+		this.discAvailableDate = discAvailableDate;
+	}
+
+	public ProductView getProduct() {
+		return product;
+	}
+
+	public void setProduct(ProductView product) {
+		this.product = product;
+	}
+
+	public DiscountView getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(DiscountView discount) {
+		this.discount = discount;
+	}
+
+	public Double getDiscRate() {
+		return discRate;
+	}
+
+	public void setDiscRate(Double discRate) {
+		this.discRate = discRate;
+	}
+
+	public Double getDiscPriceReduced() {
+		return discPriceReduced;
+	}
+
+	public void setDiscPriceReduced(Double discPriceReduced) {
+		this.discPriceReduced = discPriceReduced;
+	}	
+		
 }
