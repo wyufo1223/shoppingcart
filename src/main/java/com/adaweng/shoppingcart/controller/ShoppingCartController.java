@@ -46,7 +46,7 @@ public class ShoppingCartController {
     @ResponseBody
     public ModelAndView myShoppingCart(ModelMap model){
     	model.addAttribute("orderItems", shoppingCartService.getMyOrderItems());
+    	model.addAttribute("coupon", shoppingCartService.getMyOrderItems());
 		return new ModelAndView("myShoppingCart", model);
-    }
-	
+    }	
 }

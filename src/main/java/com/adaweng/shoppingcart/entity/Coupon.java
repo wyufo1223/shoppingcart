@@ -11,7 +11,6 @@ public class Coupon {
 	private Date endDate;
 	private Double priceReached;
 	private Double priceReduced;	
-	
 	private User user;
 	
 	public Long getId() {

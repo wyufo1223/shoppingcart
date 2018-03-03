@@ -9,14 +9,29 @@ import com.adaweng.shoppingcart.domain.OrderItemView;
 import com.adaweng.shoppingcart.domain.OrderRequest;
 import com.adaweng.shoppingcart.domain.OrderResponse;
 import com.adaweng.shoppingcart.domain.ProductStatus;
+import com.adaweng.shoppingcart.entity.OrderItem;
 import com.adaweng.shoppingcart.util.DateUtil;
 
 public class PriceProcessor implements Processor {
 
 	@Override
 	public OrderResponse process(OrderRequest request) {
-		// TODO Auto-generated method stub
+		for(OrderItemView orderItemView : request.getOrder().getOrderItems()){
+			calculateSubtotalPrice(orderItemView);
+		}
 		return null;
+	}
+	
+	public BigDecimal calculateSubtotalPrice(OrderItemView orderItemView) {
+		BigDecimal totalPrice = BigDecimal.valueOf(0d);
+		if(null == orderItemView.getProdId()) return totalPrice;		
+		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getNumbers());
+		BigDecimal unitPriceBD = BigDecimal.valueOf(orderItemView.getProdUnitPrice());
+		
+		BigDecimal subTotalPrice = orderItemView.getDiscountStrategy().calculateSubtotalPrice(
+				orderItemView, numsBD.multiply(unitPriceBD));
+		orderItemView.setSubTotalPrice(subTotalPrice);
+		return subTotalPrice;
 	}
 	
 	public BigDecimal calculateTotalPriceWithDiscounts(OrderRequest request){
@@ -41,7 +56,7 @@ public class PriceProcessor implements Processor {
 				continue;
 			}
 			
-			totalPrice = totalPrice.add(oi.calculateSubtotalPrice());	
+			totalPrice = totalPrice.add(calculateSubtotalPrice(oi));	
 			
 //			if(null == request.getOrder().getDateUtil){
 //				totalPrice = totalPrice.add(oi.calculateSubtotalPrice());				

@@ -15,7 +15,7 @@ public class OrderItemView {
 	private BigDecimal subTotalPrice;
 	private BigDecimal subTotalDiscount;
 	
-	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy();
+	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy(this);
 	
 	private ProductView product;
 	private Long prodId;
@@ -29,8 +29,10 @@ public class OrderItemView {
 	private Double discRate;
 	private Double discPriceReduced;
 	
+	private UserView userView;	
+
 	
-	public BigDecimal calculateSubtotalPrice() {
+/*	public BigDecimal calculateSubtotalPrice() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.getProduct()) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
@@ -39,9 +41,9 @@ public class OrderItemView {
 		subTotalPrice = discountStrategy.calculateSubtotalPrice(numsBD.multiply(unitPriceBD));
 		this.setSubTotalPrice(subTotalPrice);
 		return subTotalPrice;
-	}
+	}*/
 	
-	public BigDecimal calculateSubtotalDiscount() {
+/*	public BigDecimal calculateSubtotalDiscount() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.getProduct()) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
@@ -50,7 +52,7 @@ public class OrderItemView {
 		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(numsBD.multiply(unitPriceBD));
 		this.setSubTotalDiscount(subTotalDiscount);
 		return subTotalDiscount;
-	}
+	}*/
 	
 	public static OrderItemView convertOrderItemToOrderItemView(OrderItem oi){
 		OrderItemView oiv = new OrderItemView();
@@ -64,7 +66,7 @@ public class OrderItemView {
 		//oiv.setDiscount(DiscountView.convertDiscountToDiscountView(oi.getDiscount()));
 		oiv.setProdId(oi.getProdId());
 		oiv.setDiscRate(oi.getDiscRate());
-		//oiv.setSubTotalDiscount(calculateSubtotalDiscount());
+		
 		return oiv;
 	}
 
@@ -196,6 +198,14 @@ public class OrderItemView {
 
 	public void setDiscPriceReduced(Double discPriceReduced) {
 		this.discPriceReduced = discPriceReduced;
-	}	
-		
+	}
+
+	public UserView getUserView() {
+		return userView;
+	}
+
+	public void setUserView(UserView userView) {
+		this.userView = userView;
+	}		
+	
 }

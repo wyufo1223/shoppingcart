@@ -15,6 +15,8 @@ import com.adaweng.shoppingcart.entity.Product;
 import com.adaweng.shoppingcart.mapper.DiscountMapper;
 import com.adaweng.shoppingcart.mapper.OrderItemMapper;
 import com.adaweng.shoppingcart.mapper.ProductMapper;
+import com.adaweng.shoppingcart.processor.DiscountProcessor;
+import com.adaweng.shoppingcart.processor.PriceProcessor;
 
 @Service
 public class ShoppingCartService {	
@@ -28,6 +30,15 @@ public class ShoppingCartService {
 	@Autowired
 	DiscountMapper discountMapper;
 	
+	static PriceProcessor priceProcessor;
+	
+	static DiscountProcessor discountProcessor;
+	
+	static{
+		priceProcessor = new PriceProcessor();
+		discountProcessor = new DiscountProcessor();
+	}
+	
 	public List<OrderItemView> getMyOrderItems(){
 		List<OrderItemView> orderItemViewList = new ArrayList<OrderItemView>();
 		List<OrderItem> orderItemList = orderItemMapper.getAllOrderItems();
@@ -37,6 +48,8 @@ public class ShoppingCartService {
 			orderItemView.setProdName(oi.getProdName());
 			orderItemView.setNumbers(oi.getNumbers());
 			orderItemView.setProdUnitPrice(oi.getProdUnitPrice());
+			orderItemView.setSubTotalPrice(priceProcessor.calculateSubtotalPrice(orderItemView));
+			orderItemView.setSubTotalDiscount(discountProcessor.calculateSubtotalDiscount(orderItemView));
 			orderItemViewList.add(orderItemView);
 		}
 		return orderItemViewList;	

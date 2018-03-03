@@ -7,6 +7,7 @@ import javax.persistence.Transient;
 
 import com.adaweng.shoppingcart.discountstrategy.DiscountStrategy;
 import com.adaweng.shoppingcart.discountstrategy.PercentageDiscountStrategy;
+import com.adaweng.shoppingcart.domain.OrderItemView;
 
 public class OrderItem {
 	private Long id;
@@ -16,7 +17,9 @@ public class OrderItem {
 	private BigDecimal subTotalPrice;
 	private BigDecimal subTotalDiscount;
 	private Product product;
-	private Discount discount;
+	private Discount discount;	
+	private User user;
+	
 	@Transient
 	private Long prodId;
 	@Transient
@@ -38,7 +41,8 @@ public class OrderItem {
 	private Double discRate;
 	
 	@Transient
-	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy();
+	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy(
+			OrderItemView.convertOrderItemToOrderItemView(this));
 	
 	public BigDecimal calculateSubtotalPrice() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
@@ -46,7 +50,8 @@ public class OrderItem {
 		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
-		subTotalPrice = discountStrategy.calculateSubtotalPrice(numsBD.multiply(unitPriceBD));
+		subTotalPrice = discountStrategy.calculateSubtotalPrice(
+				OrderItemView.convertOrderItemToOrderItemView(this), numsBD.multiply(unitPriceBD));
 		return subTotalPrice;
 	}
 	
@@ -56,7 +61,8 @@ public class OrderItem {
 		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
-		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(numsBD.multiply(unitPriceBD));
+		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(
+				OrderItemView.convertOrderItemToOrderItemView(this), numsBD.multiply(unitPriceBD));
 		return subTotalDiscount;
 	}
 
@@ -202,6 +208,14 @@ public class OrderItem {
 
 	public void setDiscRate(Double discRate) {
 		this.discRate = discRate;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

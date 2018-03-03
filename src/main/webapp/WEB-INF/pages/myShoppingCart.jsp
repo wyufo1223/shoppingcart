@@ -69,8 +69,8 @@
 								</th>
 								<th>${orderItem.prodUnitPrice }</th>
 								<th>${orderItem.discRate } </th>
-								<th>${orderItem.subTotalPrice }</th>	
-								<th>${orderItem.subTotalDiscount }</th>								
+								<th>${orderItem.subTotalDiscount }</th>
+								<th>${orderItem.subTotalPrice }</th>																
 								<th><button onclick="deleteOrderItem('${orderItem.id }')">Delete</button></th>
 							</tr>
 						</c:forEach>

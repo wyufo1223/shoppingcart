@@ -9,6 +9,7 @@ public class OrderView {
 	private CouponView couponView;	
 	private Date paymentDate;	
 	private BigDecimal totalPrice;
+	private UserView userView;
 	
 	public void addOrderItem(OrderItemView orderItem){
 		orderItems.add(orderItem);
@@ -49,5 +50,21 @@ public class OrderView {
 	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
+
+	public CouponView getCouponView() {
+		return couponView;
+	}
+
+	public void setCouponView(CouponView couponView) {
+		this.couponView = couponView;
+	}
+
+	public UserView getUserView() {
+		return userView;
+	}
+
+	public void setUserView(UserView userView) {
+		this.userView = userView;
+	}
+		
 }
