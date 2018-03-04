@@ -25,7 +25,7 @@
                 dataType: "json",
                 contentType: "application/json",
 				success : function(result){
-					window.location.href = "${ctx }/shoppingcart/myShoppingCart";
+					window.location.href='/shoppingcart/myShoppingCart';
 				},
 				complete : function(XMLHttpRequest, textStatus, errorThrown){
 				}

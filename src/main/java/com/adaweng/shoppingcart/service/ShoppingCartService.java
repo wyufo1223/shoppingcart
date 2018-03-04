@@ -70,11 +70,11 @@ public class ShoppingCartService {
 		OrderRequest orderRequest = new OrderRequest();
 		orderRequest.setOrder(orderView);
 		orderRequest.setCoupon(CouponView.convertCouponToCouponView(couponMapper.getCouponById(1l)));
+		
 		priceProcessor.calculateTotalPriceWithDiscounts(orderRequest);
 		priceProcessor.calculateTotalPriceWithCoupon(orderRequest);
 		
-		OrderResponse response = new OrderResponse(orderRequest);
-		
+		OrderResponse response = new OrderResponse(orderRequest);		
 		return response;	
 	}
 	

@@ -27,12 +27,13 @@
        <select id="getUserByName" resultType="User" useCache="false">
               select *
               from user
-              where name like ''||#{name}||'%'
+              where userName like  #{userName} 
        </select>
 
        <insert id="save">
               insert into user
-              set name = #{name}
+              set userName = #{userName},
+              nickName =  #{nickName}          
        </insert>
 
        <delete id="delete">

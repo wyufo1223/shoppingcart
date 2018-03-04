@@ -79,7 +79,7 @@
 							<th><button onclick="window.location.href='/shoppingcart/products'">Go on Shopping</button></th>
 							<th><button onclick="">Set Order</button></th>
 							<th colspan=2>Coupon: ${myCoupon.priceReached } <font style="color: red" > - ${myCoupon.priceReduced } </font></th>
-							<th colspan=3>Total: ${totalPrice }</th>							
+							<th colspan=3>Order Total Price: <font style="color: red" > ${totalPrice } </font></th>							
 						</tr>		
 						
 					</tbody>

@@ -59,20 +59,6 @@ public class PriceProcessor implements Processor {
 			
 			totalPrice = totalPrice.add(calculateSubtotalPrice(oi));	
 			request.getOrder().setTotalPrice(totalPrice);
-//			if(null == request.getOrder().getDateUtil){
-//				totalPrice = totalPrice.add(oi.calculateSubtotalPrice());				
-//			}else{
-//				for(Discount discount : discounts){
-//					if(DateUtil.getDateUtil().getDifferDateDay(paymentDate, discount.getAvailableDate()) == 0){
-//						if(oi.getProduct().getType().equals(discount.getProductType())){
-//							BigDecimal discountBD = BigDecimal.valueOf(discount.getQuota());
-//							totalPrice = totalPrice.add(numsBD.multiply(unitPriceBD).multiply(discountBD));
-//						}else{
-//							totalPrice = totalPrice.add(numsBD.multiply(unitPriceBD));
-//						}
-//					}
-//				}
-//			}
 		}
 		
 		return totalPrice;
@@ -82,8 +68,7 @@ public class PriceProcessor implements Processor {
 		BigDecimal totalPrice = request.getOrder().getTotalPrice();
 		if(null == request.getCoupon()){
 			return totalPrice;
-		}
-		
+		}		
 		if(DateUtil.getDateUtil().getDifferDateDay(request.getOrder().getPaymentDate(), 
 				request.getCoupon().getEndDate()) <= 0){
 			if(null != totalPrice && totalPrice.compareTo(BigDecimal.valueOf(request.getCoupon().getPriceReached())) >= 0){

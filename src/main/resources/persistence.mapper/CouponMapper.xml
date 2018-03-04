@@ -20,12 +20,12 @@
        </resultMap> -->
 
        <select id="getAllCoupons" resultType="Coupon" useCache="false">
-             select c.*, u.id userId, u.name userName
+             select c.*, u.id userId, u.userName userName
              from coupon c left join user u on c.userId = u.id
        </select>
 
        <select id="getCouponById" resultType="Coupon" useCache="false">
-			select c.*, u.id userId, u.name userName
+			select c.*, u.id userId, u.userName userName
             from coupon c left join user u on c.userId = u.id
             where c.id = #{id}
        </select>

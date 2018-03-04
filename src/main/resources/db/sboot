@@ -1,3 +1,4 @@
+CREATE DATABASE sboot;
 #
 # Structure for table "user"
 #
@@ -6,9 +7,12 @@ use sboot;
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL auto_increment COMMENT 'PRIMARY KEY',
-  `name` varchar(64) NOT NULL COMMENT 'name',
-  `birthday` date DEFAULT NULL COMMENT 'birthday',
-  `address` varchar(256) DEFAULT NULL COMMENT 'address',
+  `userName` varchar(64) NOT NULL COMMENT 'userName',
+  `nickName` varchar(64) NOT NULL COMMENT 'nickName',
+  `password` varchar(100) DEFAULT NULL COMMENT 'password',
+  `score` bigint DEFAULT NULL COMMENT 'score',
+  `grade` varchar(100) DEFAULT NULL COMMENT 'grade',
+  `status` varchar(100) DEFAULT NULL COMMENT 'status',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -16,7 +20,7 @@ CREATE TABLE `user` (
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'Ada Weng','1990-01-01','Xi\'an');
+INSERT INTO `user` VALUES (1,'Ada Weng','Ada Weng', null, null, null, null);
 
 
 use sboot;
@@ -63,8 +67,6 @@ CREATE TABLE `discount` (
 INSERT INTO `discount` VALUES (1,'electronic 70%','2013.11.11', 'electronic', 'Percentage', 0.7, 0, '2013.11.11 electronic 70%');
 
 
-
-
 use sboot;
 DROP TABLE IF EXISTS `orderItem`;
 CREATE TABLE `orderItem` (
@@ -95,6 +97,7 @@ INSERT INTO `orderItem` VALUES (6,'餐⼱纸', 1, 6, null, 8,'ipad 2399 electron
 INSERT INTO `orderItem` VALUES (7,'ipad2', 1, 7, 1, 1,'ipad 2399 electronic', null, null);
 INSERT INTO `orderItem` VALUES (8,'ipad3', 1, 8, 1, 1,'ipad 2399 electronic', null, null);
 INSERT INTO `orderItem` VALUES (9,'ipad4', 1, 9, 1, 1,'ipad 2399 electronic', null, null);
+
 
 use sboot;
 DROP TABLE IF EXISTS `coupon`;
