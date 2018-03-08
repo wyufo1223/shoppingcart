@@ -104,7 +104,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(1l);
-		orderItemView.setNumbers(1l);
+		orderItemView.setQuantity(1l);
 		orderItemView.setName("ipad");
 		orderItemView.setDiscRate(0.7d);
 		orderItemView.setProdUnitPrice(2399.00);
@@ -113,7 +113,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(2l);
-		orderItemView.setNumbers(1l);
+		orderItemView.setQuantity(1l);
 		orderItemView.setName("显示器");
 		orderItemView.setDiscRate(0.7d);
 		orderItemView.setProdUnitPrice(1799.00);
@@ -122,7 +122,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(3l);
-		orderItemView.setNumbers(12l);
+		orderItemView.setQuantity(12l);
 		orderItemView.setName("啤酒");
 		orderItemView.setProdUnitPrice(25.00);
 		orderItemView.setProdType(ProductType.LIQUOR.name());
@@ -130,7 +130,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(4l);
-		orderItemView.setNumbers(5l);
+		orderItemView.setQuantity(5l);
 		orderItemView.setName("面包");
 		orderItemView.setProdUnitPrice(9.00);
 		orderItemView.setProdType(ProductType.FOOD.name());
@@ -158,7 +158,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(1l);
-		orderItemView.setNumbers(3l);
+		orderItemView.setQuantity(3l);
 		orderItemView.setName("蔬菜");
 		orderItemView.setProdUnitPrice(5.98);
 		orderItemView.setProdType(ProductType.FOOD.name());
@@ -166,7 +166,7 @@ public class PriceProcessorTest {
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(2l);
-		orderItemView.setNumbers(8l);
+		orderItemView.setQuantity(8l);
 		orderItemView.setName("餐巾");
 		orderItemView.setProdUnitPrice(3.20);
 		orderItemView.setProdType(ProductType.NECESSITIES.name());

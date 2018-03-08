@@ -63,7 +63,7 @@
 								<th>
 									<form role="form">
 										<div class="form-group">
-											<input type="text" value="${orderItem.numbers }" readonly class="form-control" placeholder="edit numbers">
+											<input type="text" value="${orderItem.quantity }" readonly class="form-control" placeholder="edit numbers">
 										</div>
 									 </form>
 								</th>

@@ -22,33 +22,33 @@ public class DiscountProcessorTest {
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(1l);
 		orderItemView.setName("ipad");
-		orderItemView.setNumbers(1l);		
+		orderItemView.setQuantity(1l);		
 		orderItemView.setProdUnitPrice(2399.00);
 		orderItemView.setDiscRate(0.5);
 		orderItemView.setProdType(ProductType.ELECTRONIC.name());
 	}
 	
 	public void initcase1() {
-		orderItemView.setNumbers(4l);		
+		orderItemView.setQuantity(4l);		
 		orderItemView.setProdUnitPrice(300.00);
 		orderItemView.setDiscRate(0.8);
 	}
 	
 	public void initcase2() {
-		orderItemView.setNumbers(6l);		
+		orderItemView.setQuantity(6l);		
 		orderItemView.setProdUnitPrice(900.00);
 		orderItemView.setDiscRate(0.3);
 	}
 	
 	public void initcase3() {
-		orderItemView.setNumbers(6l);		
+		orderItemView.setQuantity(6l);		
 		orderItemView.setProdUnitPrice(900.00);
 		orderItemView.setDiscRate(0.3);
 		orderItemView.setProdId(null);
 	}
 	
 	public void initcase4() {
-		orderItemView.setNumbers(6l);		
+		orderItemView.setQuantity(6l);		
 		orderItemView.setProdUnitPrice(900.00);
 		orderItemView.setDiscRate(0.3);
 		orderItemView.setProdId(1l);

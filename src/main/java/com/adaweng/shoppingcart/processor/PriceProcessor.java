@@ -26,7 +26,7 @@ public class PriceProcessor implements Processor {
 	public BigDecimal calculateSubtotalPrice(OrderItemView orderItemView) {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == orderItemView.getProdId()) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getNumbers());
+		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getQuantity());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(orderItemView.getProdUnitPrice());
 		
 		BigDecimal subTotalPrice = orderItemView.getDiscountStrategy().calculateSubtotalPrice(
@@ -45,14 +45,14 @@ public class PriceProcessor implements Processor {
 		}
 		
 		for(OrderItemView oi : orderItems){
-			BigDecimal numsBD = BigDecimal.valueOf(oi.getNumbers());
+			BigDecimal numsBD = BigDecimal.valueOf(oi.getQuantity());
 			BigDecimal unitPriceBD = BigDecimal.valueOf(oi.getProdUnitPrice());
 			
 			if(null != oi.getProdStatus() && 
 					ProductStatus.REMOVED.name().equals(oi.getProdStatus())) continue;
 			
 			if(null != oi.getProdStockAmount() && 
-					oi.getNumbers() > oi.getProdStockAmount()){
+					oi.getQuantity() > oi.getProdStockAmount()){
 				System.out.println("The amount of stock is not enough.");
 				continue;
 			}

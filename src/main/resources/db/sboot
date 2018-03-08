@@ -75,10 +75,10 @@ CREATE TABLE `orderItem` (
   `userId` INT(11) NOT NULL ,
   `productId` INT(11) NOT NULL ,
   `discountId` INT(11) NULL,
-  `numbers` DOUBLE NULL,
+  `quantity` DOUBLE NULL,
   `description` VARCHAR(1000) NULL,  
-  `subTotalPrice` DOUBLE NULL,
-  `subTotalDiscount` DOUBLE NULL,  
+ # `subTotalPrice` DOUBLE NULL,
+ # `subTotalDiscount` DOUBLE NULL,  
    PRIMARY KEY (`id`),
    KEY `productId` (`productId`),
    CONSTRAINT `FK_PRD_ID` FOREIGN KEY (`productId`) REFERENCES `product` (`id`),
@@ -88,15 +88,15 @@ CREATE TABLE `orderItem` (
    CONSTRAINT `FK_DIC_ID` FOREIGN KEY (`discountId`) REFERENCES `discount` (`id`)
   )ENGINE=InnoDB DEFAULT CHARSET=utf8;
   
-INSERT INTO `orderItem` VALUES (1,'ipad', 1, 1, 1, 1,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (2,'显⽰器', 1, 2, 1, 1,'1799.00 1799.00 electronic', null, null);
-INSERT INTO `orderItem` VALUES (3,'啤酒', 1, 3, null,  12,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (4,'⾯包', 1, 4, null,  5,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (5,'蔬菜', 1, 5, null, 3,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (6,'餐⼱纸', 1, 6, null, 8,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (7,'ipad2', 1, 7, 1, 1,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (8,'ipad3', 1, 8, 1, 1,'ipad 2399 electronic', null, null);
-INSERT INTO `orderItem` VALUES (9,'ipad4', 1, 9, 1, 1,'ipad 2399 electronic', null, null);
+INSERT INTO `orderItem` VALUES (1,'ipad', 1, 1, 1, 1,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (2,'显⽰器', 1, 2, 1, 1,'1799.00 1799.00 electronic');
+INSERT INTO `orderItem` VALUES (3,'啤酒', 1, 3, null,  12,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (4,'⾯包', 1, 4, null,  5,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (5,'蔬菜', 1, 5, null, 3,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (6,'餐⼱纸', 1, 6, null, 8,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (7,'ipad2', 1, 7, 1, 1,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (8,'ipad3', 1, 8, 1, 1,'ipad 2399 electronic');
+INSERT INTO `orderItem` VALUES (9,'ipad4', 1, 9, 1, 1,'ipad 2399 electronic');
 
 
 use sboot;

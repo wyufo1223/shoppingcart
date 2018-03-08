@@ -11,7 +11,7 @@ import com.adaweng.shoppingcart.entity.OrderItem;
 public class OrderItemView {
 	private Long id;
 	private String name;	
-	private Long numbers;	
+	private Long quantity;	
 	private BigDecimal subTotalPrice;
 	private BigDecimal subTotalDiscount;
 	
@@ -39,7 +39,7 @@ public class OrderItemView {
 		
 		oiv.setId(oi.getId());	
 		oiv.setName(oi.getName());		
-		oiv.setNumbers(oi.getNumbers());		
+		oiv.setQuantity(oi.getQuantity());		
 		oiv.setSubTotalPrice(oi.getSubTotalPrice());
 		oiv.setSubTotalDiscount(oi.getSubTotalDiscount());
 		//oiv.setProduct(ProductView.convertProductToProductView(oi.getProduct()));
@@ -67,12 +67,12 @@ public class OrderItemView {
 		this.name = name;
 	}
 
-	public Long getNumbers() {
-		return numbers;
+	public Long getQuantity() {
+		return quantity;
 	}
 
-	public void setNumbers(Long numbers) {
-		this.numbers = numbers;
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 	public BigDecimal getSubTotalPrice() {

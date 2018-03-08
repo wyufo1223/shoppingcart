@@ -41,9 +41,9 @@ public class ShoppingCartService {
 	@Autowired
 	CouponMapper couponMapper;
 	
-	static PriceProcessor priceProcessor;
+	private static PriceProcessor priceProcessor;
 	
-	static DiscountProcessor discountProcessor;
+	private static DiscountProcessor discountProcessor;
 	
 	static{
 		priceProcessor = new PriceProcessor();
@@ -57,7 +57,7 @@ public class ShoppingCartService {
 			OrderItemView orderItemView = OrderItemView.convertOrderItemToOrderItemView(oi);
 			orderItemView.setName(oi.getName());
 			orderItemView.setProdName(oi.getProdName());
-			orderItemView.setNumbers(oi.getNumbers());
+			orderItemView.setQuantity(oi.getQuantity());
 			orderItemView.setProdUnitPrice(oi.getProdUnitPrice());
 			orderItemView.setSubTotalPrice(priceProcessor.calculateSubtotalPrice(orderItemView));
 			orderItemView.setSubTotalDiscount(discountProcessor.calculateSubtotalDiscount(orderItemView));
@@ -94,7 +94,7 @@ public class ShoppingCartService {
 		if(oiList.size() == 0 || null != orderItemList && orderItemList.size() == 0){
 			OrderItem orderItem = new OrderItem();
 			orderItem.setName(product.getName());
-			orderItem.setNumbers(1l);
+			orderItem.setQuantity(1l);
 			orderItem.setProduct(product);
 			orderItem.setProdUnitPrice(product.getUnitPrice());
 			orderItem.setDiscount(discount);
@@ -108,7 +108,7 @@ public class ShoppingCartService {
 		
 		for(OrderItem oi : orderItemList){
 			if(oi.getProdId().equals(product.getId())){
-				oi.setNumbers(oi.getNumbers() + 1);
+				oi.setQuantity(oi.getQuantity() + 1);
 				orderItemMapper.update(oi);
 			}
 		}	

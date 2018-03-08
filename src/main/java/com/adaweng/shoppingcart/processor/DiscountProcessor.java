@@ -19,7 +19,7 @@ public class DiscountProcessor implements Processor {
 	public BigDecimal calculateSubtotalDiscount(OrderItemView orderItemView) {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == orderItemView.getProdId()) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getNumbers());
+		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getQuantity());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(orderItemView.getProdUnitPrice());
 		
 		BigDecimal subTotalDiscount = orderItemView.getDiscountStrategy().calculateSubtotalDiscount(

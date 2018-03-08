@@ -12,9 +12,11 @@ import com.adaweng.shoppingcart.domain.OrderItemView;
 public class OrderItem {
 	private Long id;
 	private String name;
-	private Long numbers;
+	private Long quantity;
 	private String description;
+	@Transient
 	private BigDecimal subTotalPrice;
+	@Transient
 	private BigDecimal subTotalDiscount;
 	private Product product;
 	private Discount discount;	
@@ -51,7 +53,7 @@ public class OrderItem {
 	public BigDecimal calculateSubtotalPrice() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.product) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
+		BigDecimal numsBD = BigDecimal.valueOf(this.getQuantity());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
 		subTotalPrice = discountStrategy.calculateSubtotalPrice(
@@ -62,7 +64,7 @@ public class OrderItem {
 	public BigDecimal calculateSubtotalDiscount() {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.product) return totalPrice;		
-		BigDecimal numsBD = BigDecimal.valueOf(this.getNumbers());
+		BigDecimal numsBD = BigDecimal.valueOf(this.getQuantity());
 		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
 		
 		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(
@@ -94,12 +96,12 @@ public class OrderItem {
 		this.product = product;
 	}
 
-	public Long getNumbers() {
-		return numbers;
+	public Long getQuantity() {
+		return quantity;
 	}
 
-	public void setNumbers(Long numbers) {
-		this.numbers = numbers;
+	public void setQuantity(Long quantity) {
+		this.quantity = quantity;
 	}
 
 	public BigDecimal getSubTotalPrice() {
