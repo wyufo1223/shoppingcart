@@ -5,26 +5,26 @@ import java.math.BigDecimal;
 import com.adaweng.shoppingcart.domain.OrderItemView;
 
 public class ReducedDiscountStrategy implements DiscountStrategy {
-	private Double priceReduced;
+	private BigDecimal priceReduced;
 	
 	@Override
 	public BigDecimal calculateSubtotalDiscount(OrderItemView orderItemView, BigDecimal price) {
 		// TODO
-		return BigDecimal.valueOf(this.getPriceReduced());
+		return this.getPriceReduced().setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	@Override
 	public BigDecimal calculateSubtotalPrice(OrderItemView orderItemView, BigDecimal price) {
 		// TODO totalPrice - priceReduced
-		BigDecimal priceReducedBD = BigDecimal.valueOf(this.getPriceReduced());
-		return price.subtract(priceReducedBD);
+		BigDecimal priceReducedBD = this.getPriceReduced();
+		return price.subtract(priceReducedBD).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
-	public Double getPriceReduced() {
+	public BigDecimal getPriceReduced() {
 		return priceReduced;
 	}
 
-	public void setPriceReduced(Double priceReduced) {
+	public void setPriceReduced(BigDecimal priceReduced) {
 		this.priceReduced = priceReduced;
 	}	
 	

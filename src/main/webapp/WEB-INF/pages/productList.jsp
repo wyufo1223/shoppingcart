@@ -45,7 +45,7 @@
 					<thead>
 						<tr>
 							<th>Product Name</th>
-							<th>Number</th>
+							<th>Quantity</th>
 							<th>Price</th>
 							<th>Status</th>
 							<th>Operation</th>
@@ -58,7 +58,7 @@
 								<th>
 									<form role="form">
 										<div class="form-group">
-											<input type="text" value="1" readonly class="form-control" placeholder="edit numbers">
+											<input type="text" value="1" readonly class="form-control" placeholder="edit quantity">
 										</div>
 									 </form>
 								</th>

@@ -27,12 +27,12 @@ public class PriceProcessor implements Processor {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == orderItemView.getProdId()) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getQuantity());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(orderItemView.getProdUnitPrice());
+		BigDecimal unitPriceBD = orderItemView.getProdUnitPrice();
 		
 		BigDecimal subTotalPrice = orderItemView.getDiscountStrategy().calculateSubtotalPrice(
 				orderItemView, numsBD.multiply(unitPriceBD));
 		orderItemView.setSubTotalPrice(subTotalPrice);
-		return subTotalPrice;
+		return subTotalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	public BigDecimal calculateTotalPriceWithDiscounts(OrderRequest request){
@@ -46,7 +46,7 @@ public class PriceProcessor implements Processor {
 		
 		for(OrderItemView oi : orderItems){
 			BigDecimal numsBD = BigDecimal.valueOf(oi.getQuantity());
-			BigDecimal unitPriceBD = BigDecimal.valueOf(oi.getProdUnitPrice());
+			BigDecimal unitPriceBD = oi.getProdUnitPrice();
 			
 			if(null != oi.getProdStatus() && 
 					ProductStatus.REMOVED.name().equals(oi.getProdStatus())) continue;
@@ -58,10 +58,10 @@ public class PriceProcessor implements Processor {
 			}
 			
 			totalPrice = totalPrice.add(calculateSubtotalPrice(oi));	
-			request.getOrder().setTotalPrice(totalPrice);
+			request.getOrder().setTotalPrice(totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP));
 		}
 		
-		return totalPrice;
+		return totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
 	public BigDecimal calculateTotalPriceWithCoupon(OrderRequest request){
@@ -71,8 +71,8 @@ public class PriceProcessor implements Processor {
 		}		
 		if(DateUtil.getDateUtil().getDifferDateDay(request.getOrder().getPaymentDate(), 
 				request.getCoupon().getEndDate()) <= 0){
-			if(null != totalPrice && totalPrice.compareTo(BigDecimal.valueOf(request.getCoupon().getPriceReached())) >= 0){
-				totalPrice = totalPrice.subtract(BigDecimal.valueOf(request.getCoupon().getPriceReduced()));
+			if(null != totalPrice && totalPrice.compareTo(request.getCoupon().getPriceReached()) >= 0){
+				totalPrice = totalPrice.subtract(request.getCoupon().getPriceReduced());
 			}
 		}
 		request.getOrder().setTotalPrice(totalPrice.setScale(2, BigDecimal.ROUND_HALF_UP));
@@ -85,8 +85,8 @@ public class PriceProcessor implements Processor {
 		}
 		
 		if(DateUtil.getDateUtil().getDifferDateDay(paymentDate, coupon.getEndDate()) <= 0){
-			if(null != totalPrice && totalPrice.compareTo(BigDecimal.valueOf(coupon.getPriceReached())) >= 0){
-				totalPrice = totalPrice.subtract(BigDecimal.valueOf(coupon.getPriceReduced()));
+			if(null != totalPrice && totalPrice.compareTo(coupon.getPriceReached()) >= 0){
+				totalPrice = totalPrice.subtract(coupon.getPriceReduced());
 			}
 		}
 		

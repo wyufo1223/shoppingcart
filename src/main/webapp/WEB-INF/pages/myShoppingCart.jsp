@@ -47,7 +47,7 @@
 						<tr>
 							<th>OrderItem Id</th>
 							<th>Product Name</th>
-							<th>Numbers </th> 
+							<th>Quantity </th> 
 							<th>Unit Price </th> 
 							<th>Discount </th>						
 							<th>SubTotal Discount </th> 
@@ -63,7 +63,7 @@
 								<th>
 									<form role="form">
 										<div class="form-group">
-											<input type="text" value="${orderItem.quantity }" readonly class="form-control" placeholder="edit numbers">
+											<input type="text" value="${orderItem.quantity }" readonly class="form-control" placeholder="edit quantity">
 										</div>
 									 </form>
 								</th>
@@ -77,7 +77,7 @@
 						<tr>
 							<th><button onclick="" disabled>Clear Cart</button></th>
 							<th><button onclick="window.location.href='/shoppingcart/products'">Go on Shopping</button></th>
-							<th><button onclick="">Set Order</button></th>
+							<th><button onclick="">Commit Order</button></th>
 							<th colspan=2>Coupon: ${myCoupon.priceReached } <font style="color: red" > - ${myCoupon.priceReduced } </font></th>
 							<th colspan=3>Order Total Price: <font style="color: red" > ${totalPrice } </font></th>							
 						</tr>		

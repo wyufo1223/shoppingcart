@@ -1,5 +1,6 @@
 package com.adaweng.shoppingcart.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class Discount {	
@@ -8,8 +9,8 @@ public class Discount {
 	private Date availableDate;	
 	private String productType;
 	private String discountType;
-	private Double rate;
-	private Double priceReduced;
+	private BigDecimal rate;
+	private BigDecimal priceReduced;
 	private String description;
 	
 	public Long getId() {
@@ -42,16 +43,16 @@ public class Discount {
 	public void setDiscountType(String discountType) {
 		this.discountType = discountType;
 	}
-	public Double getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
-	public void setRate(Double rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
-	public Double getPriceReduced() {
+	public BigDecimal getPriceReduced() {
 		return priceReduced;
 	}
-	public void setPriceReduced(Double priceReduced) {
+	public void setPriceReduced(BigDecimal priceReduced) {
 		this.priceReduced = priceReduced;
 	}
 	public String getDescription() {

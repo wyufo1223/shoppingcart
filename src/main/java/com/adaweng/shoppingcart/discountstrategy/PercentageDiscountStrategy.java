@@ -5,7 +5,8 @@ import java.math.BigDecimal;
 import com.adaweng.shoppingcart.domain.OrderItemView;
 
 public class PercentageDiscountStrategy implements DiscountStrategy {
-	private Double rate;
+	private BigDecimal rate;
+	
 	public PercentageDiscountStrategy(OrderItemView orderItemView){
 		this.rate = orderItemView.getDiscRate();
 	}
@@ -16,8 +17,8 @@ public class PercentageDiscountStrategy implements DiscountStrategy {
 		if(null == orderItemView.getDiscRate()){
 			return BigDecimal.valueOf(0);
 		}
-		BigDecimal rateBD = BigDecimal.valueOf(orderItemView.getDiscRate());	
-		return price.subtract(price.multiply(rateBD));
+		BigDecimal rateBD = orderItemView.getDiscRate();	
+		return price.subtract(price.multiply(rateBD)).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	@Override
@@ -27,15 +28,15 @@ public class PercentageDiscountStrategy implements DiscountStrategy {
 			return price;
 		}
 		
-		BigDecimal rateBD = BigDecimal.valueOf(orderItemView.getDiscRate());
-		return price.multiply(rateBD);
+		BigDecimal rateBD = orderItemView.getDiscRate();
+		return price.multiply(rateBD).setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 	
-	public Double getRate() {
+	public BigDecimal getRate() {
 		return rate;
 	}
 
-	public void setRate(Double rate) {
+	public void setRate(BigDecimal rate) {
 		this.rate = rate;
 	}
 	

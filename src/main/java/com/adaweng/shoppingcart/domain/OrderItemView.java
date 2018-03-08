@@ -20,14 +20,14 @@ public class OrderItemView {
 	private ProductView product;
 	private Long prodId;
 	private String prodName;
-	private Double prodUnitPrice;
+	private BigDecimal prodUnitPrice;
 	private String prodType;
 	
 	private DiscountView discount;
 	private Long discId;
 	private Date discAvailableDate;
-	private Double discRate;
-	private Double discPriceReduced;
+	private BigDecimal discRate;
+	private BigDecimal discPriceReduced;
 	
 	private UserView userView;
 	
@@ -101,11 +101,11 @@ public class OrderItemView {
 		this.discountStrategy = discountStrategy;
 	}
 
-	public Double getProdUnitPrice() {
+	public BigDecimal getProdUnitPrice() {
 		return prodUnitPrice;
 	}
 
-	public void setProdUnitPrice(Double prodUnitPrice) {
+	public void setProdUnitPrice(BigDecimal prodUnitPrice) {
 		this.prodUnitPrice = prodUnitPrice;
 	}
 
@@ -165,19 +165,19 @@ public class OrderItemView {
 		this.discount = discount;
 	}
 
-	public Double getDiscRate() {
+	public BigDecimal getDiscRate() {
 		return discRate;
 	}
 
-	public void setDiscRate(Double discRate) {
+	public void setDiscRate(BigDecimal discRate) {
 		this.discRate = discRate;
 	}
 
-	public Double getDiscPriceReduced() {
+	public BigDecimal getDiscPriceReduced() {
 		return discPriceReduced;
 	}
 
-	public void setDiscPriceReduced(Double discPriceReduced) {
+	public void setDiscPriceReduced(BigDecimal discPriceReduced) {
 		this.discPriceReduced = discPriceReduced;
 	}
 

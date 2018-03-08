@@ -1,5 +1,6 @@
 package com.adaweng.shoppingcart.domain;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.adaweng.shoppingcart.entity.Coupon;
@@ -10,8 +11,8 @@ public class CouponView {
 	private String code;
 	private Date startDate;
 	private Date endDate;
-	private Double priceReached;
-	private Double priceReduced;	
+	private BigDecimal priceReached;
+	private BigDecimal priceReduced;	
 	private UserView user;
 	private String userId;
 	
@@ -59,16 +60,16 @@ public class CouponView {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	public Double getPriceReached() {
+	public BigDecimal getPriceReached() {
 		return priceReached;
 	}
-	public void setPriceReached(Double priceReached) {
+	public void setPriceReached(BigDecimal priceReached) {
 		this.priceReached = priceReached;
 	}
-	public Double getPriceReduced() {
+	public BigDecimal getPriceReduced() {
 		return priceReduced;
 	}
-	public void setPriceReduced(Double priceReduced) {
+	public void setPriceReduced(BigDecimal priceReduced) {
 		this.priceReduced = priceReduced;
 	}
 	public UserView getUser() {

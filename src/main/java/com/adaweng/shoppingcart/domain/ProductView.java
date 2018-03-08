@@ -1,12 +1,14 @@
 package com.adaweng.shoppingcart.domain;
 
+import java.math.BigDecimal;
+
 import com.adaweng.shoppingcart.entity.Product;
 
 public class ProductView {
 	private Long id;
 	private String name;
 	private String type;
-	private Double unitPrice;
+	private BigDecimal unitPrice;
 	private String description;
 	private Long stockAmount;
 	private String status;
@@ -48,10 +50,10 @@ public class ProductView {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Double getUnitPrice() {
+	public BigDecimal getUnitPrice() {
 		return unitPrice;
 	}
-	public void setUnitPrice(Double unitPrice) {
+	public void setUnitPrice(BigDecimal unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 	public Long getStockAmount() {

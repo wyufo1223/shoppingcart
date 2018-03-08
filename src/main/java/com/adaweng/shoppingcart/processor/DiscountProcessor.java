@@ -20,12 +20,12 @@ public class DiscountProcessor implements Processor {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == orderItemView.getProdId()) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(orderItemView.getQuantity());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(orderItemView.getProdUnitPrice());
+		BigDecimal unitPriceBD = orderItemView.getProdUnitPrice();
 		
 		BigDecimal subTotalDiscount = orderItemView.getDiscountStrategy().calculateSubtotalDiscount(
 				orderItemView, numsBD.multiply(unitPriceBD));
 		orderItemView.setSubTotalDiscount(subTotalDiscount);
-		return subTotalDiscount;
+		return subTotalDiscount.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 }

@@ -45,8 +45,8 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 		
 		request.setCoupon(couponView);
 		request.setOrder(orderView);
@@ -58,8 +58,8 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 	}
 	
 	public void initcaseCoupon2() throws ParseException {
@@ -68,8 +68,8 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 	}
 	
 	public void initcaseCoupon3() throws ParseException {
@@ -78,8 +78,8 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 	}
 	
 	public void initcaseDiscount1() throws ParseException {
@@ -88,8 +88,8 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 		
 		discountView = new DiscountView();
 		discountViews = new ArrayList<DiscountView>();
@@ -106,8 +106,8 @@ public class PriceProcessorTest {
 		orderItemView.setProdId(1l);
 		orderItemView.setQuantity(1l);
 		orderItemView.setName("ipad");
-		orderItemView.setDiscRate(0.7d);
-		orderItemView.setProdUnitPrice(2399.00);
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.7d));
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(2399.00d));
 		orderItemView.setProdType(ProductType.ELECTRONIC.name());
 		orderItemViews.add(orderItemView);
 		
@@ -115,8 +115,8 @@ public class PriceProcessorTest {
 		orderItemView.setProdId(2l);
 		orderItemView.setQuantity(1l);
 		orderItemView.setName("显示器");
-		orderItemView.setDiscRate(0.7d);
-		orderItemView.setProdUnitPrice(1799.00);
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.7d));
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(1799.00d));
 		orderItemView.setProdType(ProductType.ELECTRONIC.name());
 		orderItemViews.add(orderItemView);
 		
@@ -124,7 +124,7 @@ public class PriceProcessorTest {
 		orderItemView.setProdId(3l);
 		orderItemView.setQuantity(12l);
 		orderItemView.setName("啤酒");
-		orderItemView.setProdUnitPrice(25.00);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(25.00d));
 		orderItemView.setProdType(ProductType.LIQUOR.name());
 		orderItemViews.add(orderItemView);
 		
@@ -132,7 +132,7 @@ public class PriceProcessorTest {
 		orderItemView.setProdId(4l);
 		orderItemView.setQuantity(5l);
 		orderItemView.setName("面包");
-		orderItemView.setProdUnitPrice(9.00);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(9.00d));
 		orderItemView.setProdType(ProductType.FOOD.name());
 		orderItemViews.add(orderItemView);
 		
@@ -140,8 +140,8 @@ public class PriceProcessorTest {
 		
 		couponView = new CouponView();
 		couponView.setEndDate(sdf.parse("2014.3.2"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 		
 		orderView.setOrderItems(orderItemViews);
 	}
@@ -153,14 +153,14 @@ public class PriceProcessorTest {
 		orderView.setPaymentDate(sdf.parse("2013.11.11"));
 		
 		couponView.setEndDate(sdf.parse("2014.11.11"));
-		couponView.setPriceReached(1000d);
-		couponView.setPriceReduced(200d);
+		couponView.setPriceReached(BigDecimal.valueOf(1000d));
+		couponView.setPriceReduced(BigDecimal.valueOf(200d));
 		
 		orderItemView = new OrderItemView();
 		orderItemView.setProdId(1l);
 		orderItemView.setQuantity(3l);
 		orderItemView.setName("蔬菜");
-		orderItemView.setProdUnitPrice(5.98);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(5.98d));
 		orderItemView.setProdType(ProductType.FOOD.name());
 		orderItemViews.add(orderItemView);
 		
@@ -168,7 +168,7 @@ public class PriceProcessorTest {
 		orderItemView.setProdId(2l);
 		orderItemView.setQuantity(8l);
 		orderItemView.setName("餐巾");
-		orderItemView.setProdUnitPrice(3.20);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(3.20d));
 		orderItemView.setProdType(ProductType.NECESSITIES.name());
 		orderItemViews.add(orderItemView);
 		

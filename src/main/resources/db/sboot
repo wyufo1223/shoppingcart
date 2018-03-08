@@ -6,7 +6,7 @@ CREATE DATABASE sboot;
 use sboot;
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL auto_increment COMMENT 'PRIMARY KEY',
+  `id` BIGINT(11) NOT NULL auto_increment COMMENT 'PRIMARY KEY',
   `userName` varchar(64) NOT NULL COMMENT 'userName',
   `nickName` varchar(64) NOT NULL COMMENT 'nickName',
   `password` varchar(100) DEFAULT NULL COMMENT 'password',
@@ -26,10 +26,10 @@ INSERT INTO `user` VALUES (1,'Ada Weng','Ada Weng', null, null, null, null);
 use sboot;
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
-  `id` INT(11) NOT NULL auto_increment,
+  `id` BIGINT(11) NOT NULL auto_increment,
   `name` VARCHAR(100) NOT NULL,
   `type` VARCHAR(20) NOT NULL,
-  `unitPrice` DOUBLE NOT NULL,
+  `unitPrice` DECIMAL(18,2) NOT NULL,
   `description` VARCHAR(1000) NULL,
   `stockAmount` INT(100) NULL DEFAULT 100,
   `status` VARCHAR(20) NULL DEFAULT 'normal',
@@ -53,13 +53,13 @@ INSERT INTO `product` VALUES (9,'ipad4','electronic', 2399.00, 'ipad 2399 electr
 use sboot;
 DROP TABLE IF EXISTS `discount`;
 CREATE TABLE `discount` (
-  `id` INT(11) NOT NULL auto_increment,
+  `id` BIGINT(11) NOT NULL auto_increment,
   `name` VARCHAR(100) NOT NULL,
   `availableDate` date NOT NULL,
   `productType` VARCHAR(20) NOT NULL,
   `discountType` VARCHAR(20) NOT NULL,
-  `rate` DOUBLE NULL,
-   `priceReduced` DOUBLE NULL,
+  `rate` DECIMAL(18,2) NULL,
+  `priceReduced` DECIMAL(18,2) NULL,
   `description` VARCHAR(1000) NULL,  
   PRIMARY KEY (`id`)
   )ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -70,12 +70,12 @@ INSERT INTO `discount` VALUES (1,'electronic 70%','2013.11.11', 'electronic', 'P
 use sboot;
 DROP TABLE IF EXISTS `orderItem`;
 CREATE TABLE `orderItem` (
-  `id` INT(11) NOT NULL auto_increment,
+  `id` BIGINT(11) NOT NULL auto_increment,
   `name` VARCHAR(100) NOT NULL,
-  `userId` INT(11) NOT NULL ,
-  `productId` INT(11) NOT NULL ,
-  `discountId` INT(11) NULL,
-  `quantity` DOUBLE NULL,
+  `userId` BIGINT(11) NOT NULL ,
+  `productId` BIGINT(11) NOT NULL ,
+  `discountId` BIGINT(11) NULL,
+  `quantity` BIGINT NULL,
   `description` VARCHAR(1000) NULL,  
  # `subTotalPrice` DOUBLE NULL,
  # `subTotalDiscount` DOUBLE NULL,  
@@ -102,14 +102,14 @@ INSERT INTO `orderItem` VALUES (9,'ipad4', 1, 9, 1, 1,'ipad 2399 electronic');
 use sboot;
 DROP TABLE IF EXISTS `coupon`;
 CREATE TABLE `coupon` (
-  `id` INT(11) NOT NULL auto_increment,
+  `id` BIGINT(11) NOT NULL auto_increment,
   `name` VARCHAR(100) NOT NULL,
   `code` VARCHAR(100) NOT NULL,
-  `userId` INT(11) NOT NULL ,
+  `userId` BIGINT(11) NOT NULL ,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `priceReached` DOUBLE NULL,
-  `priceReduced` DOUBLE NULL,
+  `priceReached` DECIMAL(18,2) NULL,
+  `priceReduced` DECIMAL(18,2) NULL,
   `description` VARCHAR(1000) NULL,  
   PRIMARY KEY (`id`),
   KEY `userId` (`userId`),
@@ -118,5 +118,10 @@ CREATE TABLE `coupon` (
   
 INSERT INTO `coupon` VALUES (1,'reach 1000 reduce 200', 'xxxxxxxx', 1, '2013.1.1', '2014.3.2', 1000, 200, 'before 2014.3.2 reach 1000 reduce 200');
 
+CREATE TABLE `sboot`.`orderItem_discount` (
+  `id` BIGINT(11) NOT NULL,
+  `orderItem_id` BIGINT(11) NULL,
+  `discount_id` BIGINT(11) NULL,
+  PRIMARY KEY (`id`));
 
 

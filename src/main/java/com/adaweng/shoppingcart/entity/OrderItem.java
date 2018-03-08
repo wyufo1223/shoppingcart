@@ -29,7 +29,7 @@ public class OrderItem {
 	@Transient
 	private String prodType;
 	@Transient
-	private Double prodUnitPrice;
+	private BigDecimal prodUnitPrice;
 	@Transient
 	private Double prodStockAmount;
 	@Transient
@@ -44,7 +44,7 @@ public class OrderItem {
 	@Transient
 	private String discType;
 	@Transient
-	private Double discRate;
+	private BigDecimal discRate;
 	
 	@Transient
 	private DiscountStrategy discountStrategy = new PercentageDiscountStrategy(
@@ -54,7 +54,7 @@ public class OrderItem {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.product) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(this.getQuantity());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
+		BigDecimal unitPriceBD = this.getProduct().getUnitPrice();
 		
 		subTotalPrice = discountStrategy.calculateSubtotalPrice(
 				OrderItemView.convertOrderItemToOrderItemView(this), numsBD.multiply(unitPriceBD));
@@ -65,7 +65,7 @@ public class OrderItem {
 		BigDecimal totalPrice = BigDecimal.valueOf(0d);
 		if(null == this.product) return totalPrice;		
 		BigDecimal numsBD = BigDecimal.valueOf(this.getQuantity());
-		BigDecimal unitPriceBD = BigDecimal.valueOf(this.getProduct().getUnitPrice());
+		BigDecimal unitPriceBD = this.getProduct().getUnitPrice();
 		
 		subTotalDiscount = discountStrategy.calculateSubtotalDiscount(
 				OrderItemView.convertOrderItemToOrderItemView(this), numsBD.multiply(unitPriceBD));
@@ -144,11 +144,11 @@ public class OrderItem {
 		this.description = description;
 	}
 
-	public Double getProdUnitPrice() {
+	public BigDecimal getProdUnitPrice() {
 		return prodUnitPrice;
 	}
 
-	public void setProdUnitPrice(Double prodUnitPrice) {
+	public void setProdUnitPrice(BigDecimal prodUnitPrice) {
 		this.prodUnitPrice = prodUnitPrice;
 	}
 
@@ -208,11 +208,11 @@ public class OrderItem {
 		this.discType = discType;
 	}
 
-	public Double getDiscRate() {
+	public BigDecimal getDiscRate() {
 		return discRate;
 	}
 
-	public void setDiscRate(Double discRate) {
+	public void setDiscRate(BigDecimal discRate) {
 		this.discRate = discRate;
 	}
 	

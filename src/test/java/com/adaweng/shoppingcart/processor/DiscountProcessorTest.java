@@ -23,34 +23,34 @@ public class DiscountProcessorTest {
 		orderItemView.setProdId(1l);
 		orderItemView.setName("ipad");
 		orderItemView.setQuantity(1l);		
-		orderItemView.setProdUnitPrice(2399.00);
-		orderItemView.setDiscRate(0.5);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(2399.00d));
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.5d));
 		orderItemView.setProdType(ProductType.ELECTRONIC.name());
 	}
 	
 	public void initcase1() {
 		orderItemView.setQuantity(4l);		
-		orderItemView.setProdUnitPrice(300.00);
-		orderItemView.setDiscRate(0.8);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(300.00d));
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.8d));
 	}
 	
 	public void initcase2() {
 		orderItemView.setQuantity(6l);		
-		orderItemView.setProdUnitPrice(900.00);
-		orderItemView.setDiscRate(0.3);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(900.00d));
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.3d));
 	}
 	
 	public void initcase3() {
 		orderItemView.setQuantity(6l);		
-		orderItemView.setProdUnitPrice(900.00);
-		orderItemView.setDiscRate(0.3);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(900.00d));
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.3d));
 		orderItemView.setProdId(null);
 	}
 	
 	public void initcase4() {
 		orderItemView.setQuantity(6l);		
-		orderItemView.setProdUnitPrice(900.00);
-		orderItemView.setDiscRate(0.3);
+		orderItemView.setProdUnitPrice(BigDecimal.valueOf(900.00d));
+		orderItemView.setDiscRate(BigDecimal.valueOf(0.3d));
 		orderItemView.setProdId(1l);
 		orderItemView.setDiscRate(null);
 	}

@@ -9,7 +9,7 @@
        <resultMap type="OrderItem" id="OrderItemMap">
               <id column="id" property="id" />
               <result column="name" property="name" />
-              <result column="numbers" property="numbers" />
+              <result column="quantity" property="quantity" />
               <result column="subTotalPrice" property="subTotalPrice" />
               <result column="subTotalDiscount" property="subTotalDiscount" />
               <!-- one to one	association -->
@@ -72,13 +72,13 @@
               set name = #{name},
               productId = #{product.id},
               discountId = #{discount.id},
-              numbers = #{numbers}
+              quantity = #{quantity}
        </insert>
        
        <update id="update">
               update orderItem
               set name = #{name},
-              numbers = #{numbers}
+              quantity = #{quantity}
               where id = #{id}
        </update>
 
