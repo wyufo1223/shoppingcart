@@ -1,4 +1,4 @@
-# a shoppingcart in springboot
+# a shoppingcart in springboot/Java
 
 1 Access url
 	http://localhost:8080/shoppingcart/products
